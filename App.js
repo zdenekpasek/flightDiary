@@ -2,17 +2,17 @@ import React from 'react';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
-import MainScreen from './src/screens/MainScreen';
-import HomeScreen from './src/screens/HomeScreen';
-import LoginScreen from './src/screens/LoginScreen';
-import SignupScreen from './src/screens/SignupScreen';
-import SettingsScreen from './src/screens/SettingsScreen';
-import UAVListScreen from './src/screens/UAV/UAVListScreen';
-import UAVDetailScreen from './src/screens/UAV/UAVDetailScreen';
-import UAVCreateScreen from './src/screens/UAV/UAVCreateScreen';
-import MissionListScreen from './src/screens/Mission/MissionListScreen';
-import MissionDetailScreen from './src/screens/Mission/MissionDetailScreen';
-import MissionCreateScreen from './src/screens/Mission/MissionCreateScreen';
+import MainScreen from './src/screens/Main';
+import HomeScreen from './src/screens/Home';
+import LoginScreen from './src/screens/Login';
+import SignupScreen from './src/screens/Signup';
+import SettingsScreen from './src/screens/Settings';
+import UAVListScreen from './src/screens/UAV/UAVList';
+import UAVDetailScreen from './src/screens/UAV/UAVDetail';
+import UAVCreateScreen from './src/screens/UAV/UAVCreate';
+import MissionListScreen from './src/screens/Mission/MissionList';
+import MissionDetailScreen from './src/screens/Mission/MissionDetail';
+import MissionCreateScreen from './src/screens/Mission/MissionCreate';
 
 const missionFlow = createStackNavigator({
   MissionList: MissionListScreen,
