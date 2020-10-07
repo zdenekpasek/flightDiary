@@ -1,13 +1,19 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { Text } from 'react-native-elements';
+import { Text, Button } from 'react-native-elements';
 import { SafeAreaView } from 'react-navigation';
+import { t, init } from '../../../localization';
+import Container from '../../components/Container';
+import Header from '../../components/Header';
 
 const SettingsScreen = () => {
+  init();
   return (
-    <View>
-      <Text h3>SettingsScreen</Text>
-    </View>
+    <Container>
+      <Header title="Settings" />
+
+      <Text>{t('welcome')}</Text>
+    </Container>
   );
 };
 

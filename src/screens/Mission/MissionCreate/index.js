@@ -6,7 +6,7 @@ import { SafeAreaView } from 'react-navigation';
 const MissionCreateScreen = () => {
   return (
     <View>
-      <Text h3>MissionCreateScreen</Text>
+      <Text h3>Add new Mission</Text>
     </View>
   );
 };
