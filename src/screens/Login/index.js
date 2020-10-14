@@ -2,11 +2,13 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Text, Button } from 'react-native-elements';
 import { SafeAreaView } from 'react-navigation';
+import AuthForm from '../../components/AuthForm';
 
 const LoginScreen = ({ navigation }) => {
   return (
     <View>
-      <Text h3>LoginScreen</Text>
+      <AuthForm title="Welcome back, Log In!" buttonText="Log In" />
+
       <Button
         onPress={() => navigation.navigate('mainFlow')}
         title="Main flow"
