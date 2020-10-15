@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Text } from 'react-native-elements';
 import { SafeAreaView } from 'react-navigation';
 import AuthForm from '../../components/AuthForm';
+import { Context as AuthContext } from '../../context/AuthContext';
 
 const SignupScreen = ({ navigation }) => {
+  const { state, signup, errorMsg } = useContext(AuthContext);
   return (
     <View>
-      <AuthForm title="Hello, Sign Up!" buttonText="Sign Up" isSignup={true} />
+      <AuthForm
+        title="Hello, Sign Up!"
+        buttonText="Sign Up"
+        isSignup={true}
+        onSubmit={signup}
+      />
 
       <Text
         style={{ color: 'blue' }}

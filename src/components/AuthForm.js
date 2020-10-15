@@ -8,6 +8,7 @@ const AuthForm = ({ title, buttonText, onSubmit, errorMessage, isSignup }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  console.log({ name, email, password });
   return (
     <View style={styles.container}>
       <Spacer>
@@ -44,7 +45,7 @@ const AuthForm = ({ title, buttonText, onSubmit, errorMessage, isSignup }) => {
       <Spacer>
         <Button
           title={buttonText}
-          onPress={() => onSubmit({ email, password })}
+          onPress={() => onSubmit({ name, email, password })}
         />
       </Spacer>
     </View>
