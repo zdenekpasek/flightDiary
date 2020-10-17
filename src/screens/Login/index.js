@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Text, Button } from 'react-native-elements';
 import { SafeAreaView } from 'react-navigation';
 import AuthForm from '../../components/AuthForm';
+import { Context as AuthContext } from '../../context/AuthContext';
 
 const LoginScreen = ({ navigation }) => {
+  const { state, errMsg, login } = useContext(AuthContext);
+
   return (
     <View>
-      <AuthForm title="Welcome back, Log In!" buttonText="Log In" />
+      <AuthForm
+        title="Welcome back, Log In!"
+        buttonText="Log In"
+        onSubmit={login}
+      />
 
       <Button
         onPress={() => navigation.navigate('mainFlow')}

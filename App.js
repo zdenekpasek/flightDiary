@@ -13,7 +13,9 @@ import UAVCreateScreen from './src/screens/UAV/UAVCreate';
 import MissionListScreen from './src/screens/Mission/MissionList';
 import MissionDetailScreen from './src/screens/Mission/MissionDetail';
 import MissionCreateScreen from './src/screens/Mission/MissionCreate';
+import AuthScreen from './src/screens/AuthScreen';
 import { Provider as AuthProvider } from './src/context/AuthContext';
+import { setNavigator } from './src/navRef';
 
 const missionFlow = createStackNavigator({
   MissionList: MissionListScreen,
@@ -36,6 +38,7 @@ UAVFlow.navigationOptions = {
 };
 
 const switchNavigator = createSwitchNavigator({
+  LocalAuth: AuthScreen,
   Main: MainScreen,
   loginFlow: createStackNavigator({
     Login: LoginScreen,
@@ -55,7 +58,7 @@ export default () => {
   return (
     <Suspense fallback="loading...">
       <AuthProvider>
-        <App />
+        <App ref={(navigator) => setNavigator(navigator)} />
       </AuthProvider>
     </Suspense>
   );
