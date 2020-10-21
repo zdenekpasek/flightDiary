@@ -6,5 +6,11 @@
   "signup": "Registrovat",
   "password": "Heslo",
   "loginTitle": "Vítejte zpět, přihlaste se!",
-  "name": "Jméno"
+  "name": "Jméno",
+  "personalInfo": "Osobní informace",
+  "state": "Země",
+  "statistics": "Statistiky",
+  "missions": "Mise",
+  "flightTime": "Celková doba letání",
+  "distance": "Vzdálenost"
 }

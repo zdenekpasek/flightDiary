@@ -12,7 +12,8 @@ const Container = ({ children }) => {
 
 const styles = StyleSheet.create({
   container: {
-    // paddingTop: hp('5%'),
+    backgroundColor: '#F2F2F2',
+    flex: 1,
   },
 });
 

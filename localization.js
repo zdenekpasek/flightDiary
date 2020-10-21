@@ -26,7 +26,7 @@ export const init = () => {
     [localeLanguageTag]:
       localeLanguageTag === 'cs-CZ' || localeLanguageTag === 'en-US'
         ? translationGetters[localeLanguageTag]()
-        : localeLanguageTag === 'en-US',
+        : translationGetters['en-US'](),
   };
   i18n.locale = localeLanguageTag;
 };

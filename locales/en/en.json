@@ -6,5 +6,11 @@
   "signup": "Sign Up",
   "password": "Password",
   "loginTitle": "Welcome back, Log In!",
-  "name": "Name"
+  "name": "Name",
+  "personalInfo": "Personal Info",
+  "state": "State",
+  "statistics": "Statistics",
+  "missions": "Missions",
+  "flightTime": "Flight Time",
+  "distance": "Distance"
 }
