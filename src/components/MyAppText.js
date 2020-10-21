@@ -2,7 +2,13 @@ import React from 'react';
 import { Text, StyleSheet } from 'react-native';
 import { useFonts } from 'expo-font';
 
-const MyAppText = ({ children, fontWeight, fontSize, customStyle }) => {
+const MyAppText = ({
+  children,
+  fontWeight,
+  fontSize,
+  customStyle,
+  onPress,
+}) => {
   const [loaded] = useFonts({
     Montserrat_light: require('../../assets/fonts/Montserrat-Light.ttf'),
     Montserrat_regular: require('../../assets/fonts/Montserrat-Regular.ttf'),
@@ -17,7 +23,10 @@ const MyAppText = ({ children, fontWeight, fontSize, customStyle }) => {
   }
 
   return (
-    <Text style={[styles(fontWeight, fontSize).text, customStyle]}>
+    <Text
+      style={[styles(fontWeight, fontSize).text, customStyle]}
+      onPress={onPress}
+    >
       {children}
     </Text>
   );

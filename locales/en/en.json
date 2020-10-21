@@ -1,3 +1,10 @@
 {
-  "welcome": "Welcome"
+  "welcome": "Welcome",
+  "noAccount": "Dont have an account? Signup in here.",
+  "alreadyAccount": "Already have an account? Log in here.",
+  "login": "Log In",
+  "signup": "Sign Up",
+  "password": "Password",
+  "loginTitle": "Welcome back, Log In!",
+  "name": "Name"
 }

@@ -6,7 +6,7 @@ import AuthForm from '../../components/AuthForm';
 import { Context as AuthContext } from '../../context/AuthContext';
 
 const SignupScreen = ({ navigation }) => {
-  const { state, signup, errorMsg } = useContext(AuthContext);
+  const { signup, errorMsg } = useContext(AuthContext);
   return (
     <View>
       <AuthForm

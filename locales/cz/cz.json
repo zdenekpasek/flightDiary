@@ -1,3 +1,10 @@
 {
-  "welcome": "Vitejte"
+  "welcome": "Vitejte",
+  "noAccount": "Nemáte ješte uživatelský účet? Založte si ho zde.",
+  "alreadyAccount": "Už máte vytvořený účet? Přihlaste se zde.",
+  "login": "Přihlásit se",
+  "signup": "Registrovat",
+  "password": "Heslo",
+  "loginTitle": "Vítejte zpět, přihlaste se!",
+  "name": "Jméno"
 }

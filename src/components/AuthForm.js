@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Text, Button, Input } from 'react-native-elements';
+import { t, init } from '../../localization';
 import Spacer from './spacer';
 
 const AuthForm = ({ title, buttonText, onSubmit, errorMessage, isSignup }) => {
+  init();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -16,7 +18,7 @@ const AuthForm = ({ title, buttonText, onSubmit, errorMessage, isSignup }) => {
 
       {isSignup ? (
         <Input
-          label="Full name"
+          label={t('name')}
           autoCapitalize="none"
           autoCorrect={false}
           value={name}
@@ -31,7 +33,7 @@ const AuthForm = ({ title, buttonText, onSubmit, errorMessage, isSignup }) => {
         onChangeText={(newEmail) => setEmail(newEmail)}
       />
       <Input
-        label="Password"
+        label={t('password')}
         autoCapitalize="none"
         autoCorrect={false}
         secureTextEntry={true}
@@ -43,7 +45,7 @@ const AuthForm = ({ title, buttonText, onSubmit, errorMessage, isSignup }) => {
       ) : null}
       <Spacer>
         <Button
-          title={buttonText}
+          title={buttonText.props.children}
           onPress={
             isSignup
               ? () => onSubmit({ name, email, password })

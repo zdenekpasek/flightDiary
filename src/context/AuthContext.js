@@ -6,7 +6,7 @@ import { navigate } from '../navRef';
 const authReducer = (state, action) => {
   switch (action.type) {
     case 'signup':
-      return { token: action.payload.token, errorMsg: '' };
+      return { errorMsg: '', token: action.payload.token };
     case 'add_err':
       return { ...state, errorMsg: action.payload };
     case 'logout':
@@ -45,7 +45,7 @@ const login = (dispatch) => async ({ email, password }) => {
   } catch (err) {
     dispatch({
       action: 'add_err',
-      payload: 'Something went wrong with login!',
+      payload: 'Something went wrong with login',
     });
   }
 };
@@ -57,10 +57,6 @@ const tryLocalLogin = (dispatch) => async () => {
     dispatch({ type: 'signup', payload: token });
     navigate('mainFlow');
   } else {
-    dispatch({
-      type: 'add_err',
-      payload: 'invalid local login ',
-    });
     navigate('Main');
   }
 };

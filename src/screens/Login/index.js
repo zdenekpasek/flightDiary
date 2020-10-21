@@ -2,30 +2,33 @@ import React, { useContext } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Text, Button } from 'react-native-elements';
 import { SafeAreaView } from 'react-navigation';
+import { t, init } from '../../../localization';
 import AuthForm from '../../components/AuthForm';
+import MyAppText from '../../components/MyAppText';
 import { Context as AuthContext } from '../../context/AuthContext';
 
 const LoginScreen = ({ navigation }) => {
-  const { state, errMsg, login } = useContext(AuthContext);
+  init();
+  const { state, login } = useContext(AuthContext);
+
+  console.log(state.errorMsg);
 
   return (
     <View>
       <AuthForm
-        title="Welcome back, Log In!"
-        buttonText="Log In"
+        title={t('loginTitle')}
+        buttonText={<MyAppText>{t('login')}</MyAppText>}
         onSubmit={login}
       />
 
-      <Button
-        onPress={() => navigation.navigate('mainFlow')}
-        title="Main flow"
-      />
-      <Text
-        style={{ color: 'blue' }}
+      <Text>{state.errorMsg}</Text>
+
+      <MyAppText
+        customStyle={{ color: 'blue' }}
         onPress={() => navigation.navigate('Signup')}
       >
-        Dont have an account? Signup in here.
-      </Text>
+        {t('noAccount')}
+      </MyAppText>
     </View>
   );
 };
