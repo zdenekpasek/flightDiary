@@ -12,5 +12,7 @@
   "statistics": "Statistiky",
   "missions": "Mise",
   "flightTime": "Celková doba letání",
-  "distance": "Vzdálenost"
+  "distance": "Vzdálenost",
+  "weight": "Váha",
+  "addNewUav": "Přidat nové UAV"
 }

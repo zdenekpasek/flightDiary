@@ -12,5 +12,7 @@
   "statistics": "Statistics",
   "missions": "Missions",
   "flightTime": "Flight Time",
-  "distance": "Distance"
+  "distance": "Distance",
+  "weight": "Weight",
+  "addNewUav": "Add new UAV"
 }

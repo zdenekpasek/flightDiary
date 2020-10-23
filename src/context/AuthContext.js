@@ -51,13 +51,17 @@ const login = (dispatch) => async ({ email, password }) => {
 };
 
 const tryLocalLogin = (dispatch) => async () => {
-  const token = await AsyncStorage.getItem('token');
+  try {
+    const token = await AsyncStorage.getItem('token');
 
-  if (token) {
-    dispatch({ type: 'signup', payload: token });
-    navigate('mainFlow');
-  } else {
-    navigate('Main');
+    if (token) {
+      dispatch({ type: 'signup', payload: token });
+      navigate('mainFlow');
+    } else {
+      navigate('Main');
+    }
+  } catch (err) {
+    console.log(err);
   }
 };
 
