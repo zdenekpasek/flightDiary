@@ -3,15 +3,19 @@ import { View, StyleSheet } from 'react-native';
 import { Text } from 'react-native-elements';
 import { SafeAreaView } from 'react-navigation';
 import AuthForm from '../../components/AuthForm';
+import MyAppText from '../../components/MyAppText';
 import { Context as AuthContext } from '../../context/AuthContext';
+import { t, init } from '../../../localization';
+import Container from '../../components/Container';
 
 const SignupScreen = ({ navigation }) => {
+  init();
   const { signup, errorMsg } = useContext(AuthContext);
   return (
-    <View>
+    <Container>
       <AuthForm
         title="Hello, Sign Up!"
-        buttonText="Sign Up"
+        buttonText={<MyAppText>{t('signup')}</MyAppText>}
         isSignup={true}
         onSubmit={signup}
       />
@@ -22,7 +26,7 @@ const SignupScreen = ({ navigation }) => {
       >
         Already have an account? Log in here.
       </Text>
-    </View>
+    </Container>
   );
 };
 

@@ -6,15 +6,14 @@ import { t, init } from '../../../localization';
 import AuthForm from '../../components/AuthForm';
 import MyAppText from '../../components/MyAppText';
 import { Context as AuthContext } from '../../context/AuthContext';
+import Container from '../../components/Container';
 
 const LoginScreen = ({ navigation }) => {
   init();
   const { state, login } = useContext(AuthContext);
 
-  console.log(state.errorMsg);
-
   return (
-    <View>
+    <Container>
       <AuthForm
         title={t('loginTitle')}
         buttonText={<MyAppText>{t('login')}</MyAppText>}
@@ -29,7 +28,7 @@ const LoginScreen = ({ navigation }) => {
       >
         {t('noAccount')}
       </MyAppText>
-    </View>
+    </Container>
   );
 };
 
