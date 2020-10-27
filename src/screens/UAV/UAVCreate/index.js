@@ -1,18 +1,17 @@
 import React from 'react';
-import { View, StyleSheet, ScrollView } from 'react-native';
-import { Text } from 'react-native-elements';
-import { SafeAreaView } from 'react-navigation';
+import { View, StyleSheet, Button } from 'react-native';
 import { t, init } from '../../../../localization';
-import AddForm from '../../../components/AddForm';
+import AddUavForm from '../components/AddUavForm';
 import Container from '../../../components/Container';
+import MyAppText from '../../../components/MyAppText';
+import Spacer from '../../../components/spacer';
 
 const UAVCreateScreen = () => {
   init();
   return (
     <Container>
-      <ScrollView>
-        <AddForm isAddUAV={true} />
-      </ScrollView>
+      <Spacer />
+      <AddUavForm buttonText={<MyAppText>{t('addUav')}</MyAppText>} />
     </Container>
   );
 };

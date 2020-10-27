@@ -14,5 +14,9 @@
   "flightTime": "Flight Time",
   "distance": "Distance",
   "weight": "Weight",
-  "addNewUav": "Add new UAV"
+  "addNewUav": "Add new UAV",
+  "signupTitle": "Hello, Sign Up!",
+  "selectUav": "Select UAV:",
+  "selectCategory": "Select category",
+  "addUav": "Add UAV"
 }

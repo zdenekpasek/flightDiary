@@ -10,22 +10,24 @@ import Container from '../../components/Container';
 
 const SignupScreen = ({ navigation }) => {
   init();
-  const { signup, errorMsg } = useContext(AuthContext);
+  const { state, signup } = useContext(AuthContext);
   return (
     <Container>
       <AuthForm
-        title="Hello, Sign Up!"
+        title={t('signupTitle')}
         buttonText={<MyAppText>{t('signup')}</MyAppText>}
         isSignup={true}
         onSubmit={signup}
       />
 
-      <Text
-        style={{ color: 'blue' }}
+      <Text>{state.errorMsg}</Text>
+
+      <MyAppText
+        customStyle={{ color: 'blue', marginLeft: 10 }}
         onPress={() => navigation.navigate('Login')}
       >
-        Already have an account? Log in here.
-      </Text>
+        {t('alreadyAccount')}
+      </MyAppText>
     </Container>
   );
 };

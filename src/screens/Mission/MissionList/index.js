@@ -1,20 +1,34 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Text, Button } from 'react-native-elements';
-import { SafeAreaView } from 'react-navigation';
+import { FontAwesome } from '@expo/vector-icons';
 import Container from '../../../components/Container';
 import Header from '../../../components/Header';
+import HeaderLine from '../../../components/HeaderLine';
 import Spacer from '../../../components/spacer';
+import MyAppText from '../../../components/MyAppText';
 
 const MissionListScreen = ({ navigation }) => {
   return (
     <Container>
-      <Header title="Mission list" />
+      <View style={{ flexDirection: 'row' }}>
+        <Header customStyle={{ flex: 1 }} title="Mission list" />
+        <Button
+          onPress={() => navigation.navigate('MissionCreate')}
+          type="clear"
+          icon={<FontAwesome name="share-square" size={30} color="#374355" />}
+        />
+
+        <Button
+          onPress={() => navigation.navigate('MissionCreate')}
+          type="clear"
+          icon={<FontAwesome name="plus" size={30} color="#374355" />}
+        />
+      </View>
+
+      <HeaderLine />
+
       <Spacer />
-      <Button
-        onPress={() => navigation.navigate('MissionCreate')}
-        title="Create Mission"
-      />
     </Container>
   );
 };

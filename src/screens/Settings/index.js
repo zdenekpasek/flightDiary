@@ -5,6 +5,7 @@ import { SafeAreaView } from 'react-navigation';
 import { t, init } from '../../../localization';
 import Container from '../../components/Container';
 import Header from '../../components/Header';
+import HeaderLine from '../../components/HeaderLine';
 import { Context as AuthContext } from '../../context/AuthContext';
 
 const SettingsScreen = () => {
@@ -13,6 +14,7 @@ const SettingsScreen = () => {
   return (
     <Container>
       <Header title="Settings" />
+      <HeaderLine />
 
       <Text>{t('welcome')}</Text>
 

@@ -14,5 +14,9 @@
   "flightTime": "Celková doba letání",
   "distance": "Vzdálenost",
   "weight": "Váha",
-  "addNewUav": "Přidat nové UAV"
+  "addNewUav": "Přidat nové UAV",
+  "signupTitle": "Zdravím, registrujte se!",
+  "selectUav": "Vyberte UAV:",
+  "selectCategory": "Vyberte kategorii:",
+  "addUav": "Přidat UAV"
 }

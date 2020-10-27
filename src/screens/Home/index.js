@@ -5,6 +5,7 @@ import { SafeAreaView } from 'react-navigation';
 import { t, init } from '../../../localization';
 import Container from '../../components/Container';
 import Header from '../../components/Header';
+import HeaderLine from '../../components/HeaderLine';
 import MyAppText from '../../components/MyAppText';
 import Spacer from '../../components/spacer';
 import StatisticsCard from './components/StatisticsCard';
@@ -45,6 +46,7 @@ const HomeScreen = () => {
   return (
     <Container>
       <Header title={t('personalInfo')} />
+      <HeaderLine />
 
       <UserInfoCard
         name={mockData.name}

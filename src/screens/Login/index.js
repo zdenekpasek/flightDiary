@@ -23,7 +23,7 @@ const LoginScreen = ({ navigation }) => {
       <Text>{state.errorMsg}</Text>
 
       <MyAppText
-        customStyle={{ color: 'blue' }}
+        customStyle={{ color: 'blue', marginLeft: 10 }}
         onPress={() => navigation.navigate('Signup')}
       >
         {t('noAccount')}

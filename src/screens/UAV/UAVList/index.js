@@ -1,20 +1,26 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Text, Button } from 'react-native-elements';
-import { SafeAreaView } from 'react-navigation';
+import { FontAwesome } from '@expo/vector-icons';
 import Container from '../../../components/Container';
 import Header from '../../../components/Header';
+import HeaderLine from '../../../components/HeaderLine';
+import MyAppText from '../../../components/MyAppText';
 import Spacer from '../../../components/spacer';
 
 const UAVListScreen = ({ navigation }) => {
   return (
     <Container>
-      <Header title="UAV list" />
+      <View style={{ flexDirection: 'row' }}>
+        <Header customStyle={{ flex: 1 }} title="UAV list" />
+        <Button
+          onPress={() => navigation.navigate('UAVCreate')}
+          type="clear"
+          icon={<FontAwesome name="plus" size={30} color="#374355" />}
+        />
+      </View>
+      <HeaderLine />
       <Spacer />
-      <Button
-        onPress={() => navigation.navigate('UAVCreate')}
-        title="Create UAV"
-      />
     </Container>
   );
 };

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Text, Button, Input } from 'react-native-elements';
 import { t, init } from '../../localization';
+import MyAppText from './MyAppText';
 import Spacer from './spacer';
 
 const AuthForm = ({ title, buttonText, onSubmit, errorMessage, isSignup }) => {
@@ -13,9 +14,12 @@ const AuthForm = ({ title, buttonText, onSubmit, errorMessage, isSignup }) => {
   return (
     <View style={styles.container}>
       <Spacer>
-        <Text h3>{title}</Text>
+        <MyAppText fontWeight="bold" fontSize={35}>
+          {title}
+        </MyAppText>
       </Spacer>
 
+      <Spacer />
       {isSignup ? (
         <Input
           label={t('name')}
