@@ -18,5 +18,12 @@
   "signupTitle": "Zdravím, registrujte se!",
   "selectUav": "Vyberte UAV:",
   "selectCategory": "Vyberte kategorii:",
-  "addUav": "Přidat UAV"
+  "addUav": "Přidat UAV",
+  "addMission": "Přidat misi",
+  "missionName": "Název mise",
+  "date": "Datum",
+  "time": "Čas",
+  "battery": "Použité baterie",
+  "desc": "Popis",
+  "uavName": "Název UAV"
 }

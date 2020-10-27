@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Text, ImagePropTypes } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 import { Picker } from '@react-native-community/picker';
 import { Button, Input } from 'react-native-elements';
 import MyAppText from '../../../components/MyAppText';
@@ -16,7 +16,7 @@ const AddUavForm = ({ buttonText }) => {
   return (
     <View>
       <Input
-        label={t('name')}
+        label={t('uavName')}
         autoCapitalize="none"
         autoCorrect={false}
         value={name}

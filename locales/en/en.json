@@ -18,5 +18,12 @@
   "signupTitle": "Hello, Sign Up!",
   "selectUav": "Select UAV:",
   "selectCategory": "Select category",
-  "addUav": "Add UAV"
+  "addUav": "Add UAV",
+  "addMission": "Add mission",
+  "missionName": "Mission name",
+  "date": "Date",
+  "time": "Time",
+  "battery": "Used batteries",
+  "desc": "Description",
+  "uavName": "UAV Name"
 }
