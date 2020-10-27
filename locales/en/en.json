@@ -25,5 +25,6 @@
   "time": "Time",
   "battery": "Used batteries",
   "desc": "Description",
-  "uavName": "UAV Name"
+  "uavName": "UAV Name",
+  "logout": "Logout"
 }

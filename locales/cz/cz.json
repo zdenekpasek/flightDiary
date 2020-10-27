@@ -25,5 +25,6 @@
   "time": "Čas",
   "battery": "Použité baterie",
   "desc": "Popis",
-  "uavName": "Název UAV"
+  "uavName": "Název UAV",
+  "logout": "Odhlásit se"
 }
