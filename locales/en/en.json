@@ -26,5 +26,8 @@
   "battery": "Used batteries",
   "desc": "Description",
   "uavName": "UAV Name",
-  "logout": "Logout"
+  "logout": "Logout",
+  "missionList": "Mission list",
+  "uavList": "UAV list",
+  "settings": "Settings"
 }

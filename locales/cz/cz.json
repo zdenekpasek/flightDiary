@@ -26,5 +26,8 @@
   "battery": "Použité baterie",
   "desc": "Popis",
   "uavName": "Název UAV",
-  "logout": "Odhlásit se"
+  "logout": "Odhlásit se",
+  "missionList": "List misí",
+  "uavList": "List UAV",
+  "settings": "Nastavení"
 }

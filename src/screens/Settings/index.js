@@ -14,7 +14,7 @@ const SettingsScreen = () => {
   const { signout } = useContext(AuthContext);
   return (
     <Container>
-      <Header title="Settings" />
+      <Header title={t('settings')} />
       <HeaderLine />
 
       <Card title={t('logout')} height={70} onPress={signout} icon="log-out" />

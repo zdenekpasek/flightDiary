@@ -2,6 +2,7 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Text, Button } from 'react-native-elements';
 import { FontAwesome } from '@expo/vector-icons';
+import { t, init } from '../../../../localization';
 import Container from '../../../components/Container';
 import Header from '../../../components/Header';
 import HeaderLine from '../../../components/HeaderLine';
@@ -9,10 +10,11 @@ import Spacer from '../../../components/spacer';
 import MyAppText from '../../../components/MyAppText';
 
 const MissionListScreen = ({ navigation }) => {
+  init();
   return (
     <Container>
       <View style={{ flexDirection: 'row' }}>
-        <Header customStyle={{ flex: 1 }} title="Mission list" />
+        <Header customStyle={{ flex: 1 }} title={t('missionList')} />
         <Button
           onPress={() => navigation.navigate('MissionCreate')}
           type="clear"
