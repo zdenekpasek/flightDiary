@@ -1,19 +1,23 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import { Text, Button, ListItem, Avatar } from 'react-native-elements';
 import { FontAwesome } from '@expo/vector-icons';
+import { NavigationEvents } from 'react-navigation';
 import { t, init } from '../../../../localization';
 import Container from '../../../components/Container';
 import Header from '../../../components/Header';
 import HeaderLine from '../../../components/HeaderLine';
 import UavListItem from '../components/UavListItem';
 import { data } from '../../../mock/uavData_mock';
+import { Context as UavContext } from '../../../context/UavContext';
 
 const UAVListScreen = ({ navigation }) => {
   init();
-
+  const { state, fetchUavs } = useContext(UavContext);
+  console.log(state);
   return (
     <Container>
+      <NavigationEvents onWillFocus={fetchUavs} />
       <View style={{ flexDirection: 'row' }}>
         <Header customStyle={{ flex: 1 }} title={t('uavList')} />
         <Button
@@ -25,8 +29,8 @@ const UAVListScreen = ({ navigation }) => {
       <HeaderLine />
 
       <FlatList
-        data={data}
-        keyExtractor={(item) => item.name}
+        data={state}
+        keyExtractor={(item) => item._id}
         horizontal={false}
         showsVerticalScrollIndicator={false}
         renderItem={({ item }) => {

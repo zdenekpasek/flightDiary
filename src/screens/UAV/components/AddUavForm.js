@@ -5,13 +5,13 @@ import { Button, Input } from 'react-native-elements';
 import MyAppText from '../../../components/MyAppText';
 import { t, init } from '../../../../localization';
 
-const AddUavForm = ({ buttonText }) => {
+const AddUavForm = ({ buttonText, onSubmit }) => {
   init();
-  const [name, setName] = useState('');
+  const [uavName, setUavName] = useState('');
   const [okNumber, setOkNumber] = useState('');
   const [weight, setWeight] = useState('');
-  const [selectedUav, setSelectedUav] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('');
+  const [uav, setUav] = useState('');
+  const [category, setCategory] = useState('');
 
   return (
     <View>
@@ -19,8 +19,8 @@ const AddUavForm = ({ buttonText }) => {
         label={t('uavName')}
         autoCapitalize="none"
         autoCorrect={false}
-        value={name}
-        onChangeText={(newName) => setName(newName)}
+        value={uavName}
+        onChangeText={(newName) => setUavName(newName)}
       />
 
       <Input
@@ -48,10 +48,10 @@ const AddUavForm = ({ buttonText }) => {
             {t('selectUav')}
           </MyAppText>
           <Picker
-            selectedValue={selectedUav}
+            selectedValue={uav}
             style={styles.pickerStyle}
             mode="dropdown"
-            onValueChange={(newSelectedUav) => setSelectedUav(newSelectedUav)}
+            onValueChange={(newSelectedUav) => setUav(newSelectedUav)}
             prompt="Select drone"
           >
             <Picker.Item label="DJI Mavic Air" value="DJI Mavic Air" />
@@ -68,12 +68,12 @@ const AddUavForm = ({ buttonText }) => {
             {t('selectCategory')}
           </MyAppText>
           <Picker
-            selectedValue={selectedCategory}
+            selectedValue={category}
             style={styles.pickerStyle}
             mode="dropdown"
             prompt="Pick drone"
             onValueChange={(newSelectedCategory) =>
-              setSelectedCategory(newSelectedCategory)
+              setCategory(newSelectedCategory)
             }
           >
             <Picker.Item label="Professional" value="Professional" />
@@ -83,7 +83,12 @@ const AddUavForm = ({ buttonText }) => {
           </Picker>
         </View>
       </View>
-      <Button title={buttonText.props.children} />
+      <Button
+        title={buttonText.props.children}
+        onPress={() => {
+          onSubmit({ uavName, weight, category, uav, okNumber });
+        }}
+      />
     </View>
   );
 };

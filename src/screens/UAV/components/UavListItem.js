@@ -18,7 +18,7 @@ const UavListItem = ({ item, onPress }) => {
       <Avatar rounded source={{ uri: item.imgUri }} />
       <ListItem.Content>
         <ListItem.Title style={styles.colorStyle}>
-          <MyAppText fontWeight="bold">{item.name}</MyAppText>
+          <MyAppText fontWeight="bold">{item.uavName}</MyAppText>
         </ListItem.Title>
         <View style={{ flexDirection: 'row' }}>
           <ListItem.Subtitle style={styles.colorStyle}>
