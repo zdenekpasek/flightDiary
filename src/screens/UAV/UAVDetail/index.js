@@ -13,7 +13,7 @@ const UAVDetailScreen = ({ navigation }) => {
   const { state } = useContext(UavContext);
   const _id = navigation.getParam('_id');
 
-  const uav = state.find((u) => u._id === _id);
+  const uav = state.uavs.find((u) => u._id === _id);
 
   return (
     <Container>

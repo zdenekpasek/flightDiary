@@ -14,7 +14,6 @@ import { Context as UavContext } from '../../../context/UavContext';
 const UAVListScreen = ({ navigation }) => {
   init();
   const { state, fetchUavs } = useContext(UavContext);
-  console.log(state);
   return (
     <Container>
       <NavigationEvents onWillFocus={fetchUavs} />
@@ -29,7 +28,7 @@ const UAVListScreen = ({ navigation }) => {
       <HeaderLine />
 
       <FlatList
-        data={state}
+        data={state.uavs}
         keyExtractor={(item) => item._id}
         horizontal={false}
         showsVerticalScrollIndicator={false}
