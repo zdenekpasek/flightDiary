@@ -29,5 +29,6 @@
   "logout": "Logout",
   "missionList": "Mission list",
   "uavList": "UAV list",
-  "settings": "Settings"
+  "settings": "Settings",
+  "category": "Category"
 }

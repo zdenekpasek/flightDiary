@@ -29,5 +29,6 @@
   "logout": "Odhlásit se",
   "missionList": "List misí",
   "uavList": "List UAV",
-  "settings": "Nastavení"
+  "settings": "Nastavení",
+  "category": "Kategorie"
 }

@@ -37,7 +37,9 @@ const UAVListScreen = ({ navigation }) => {
           return (
             <UavListItem
               item={item}
-              onPress={() => navigation.navigate('UAVDetail')}
+              onPress={() =>
+                navigation.navigate('UAVDetail', { _id: item._id })
+              }
             />
           );
         }}
