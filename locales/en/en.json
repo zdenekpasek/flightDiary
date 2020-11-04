@@ -30,5 +30,17 @@
   "missionList": "Mission list",
   "uavList": "UAV list",
   "settings": "Settings",
-  "category": "Category"
+  "category": "Category",
+  "smallDrone": "Small",
+  "racingDrone": "Racing",
+  "fpvDrone": "FPV",
+  "photograhyDrone": "Photography",
+  "proffesionalDrone": "Proffesional",
+  "customDrone": "Custom",
+  "multirotorDrone": "Multi rotor",
+  "fixedwingDrone": "Fixed wing",
+  "singlerotorDrone": "Single rotor",
+  "fixedwingHybrid": "Fixed wing hybrid",
+  "quadrocopter": "Quadrocopter",
+  "hexacopter": "Hexacopter"
 }

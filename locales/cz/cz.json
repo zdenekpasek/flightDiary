@@ -30,5 +30,17 @@
   "missionList": "List misí",
   "uavList": "List UAV",
   "settings": "Nastavení",
-  "category": "Kategorie"
+  "category": "Kategorie",
+  "smallDrone": "Malý",
+  "racingDrone": "Závodní",
+  "fpvDrone": "FPV",
+  "photograhyDrone": "Fotografování",
+  "proffesionalDrone": "Profesionální",
+  "customDrone": "Amatérský",
+  "multirotorDrone": "Více rotorů",
+  "fixedwingDrone": "Fixní křídla",
+  "singlerotorDrone": "Jeden rotor",
+  "fixedwingHybrid": "Fixní křidla hybrid",
+  "quadrocopter": "Kvadrokoptéra",
+  "hexacopter": "Hexakoptéra"
 }

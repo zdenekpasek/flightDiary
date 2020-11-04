@@ -9,7 +9,9 @@ import { Context as UavContext } from '../../../context/UavContext';
 
 const UAVCreateScreen = () => {
   init();
-  const { state, createUav } = useContext(UavContext);
+  const { state, createUav, clearErrorMessage } = useContext(UavContext);
+
+  console.log(state.errorMessage);
 
   return (
     <Container>
@@ -17,6 +19,7 @@ const UAVCreateScreen = () => {
       <AddUavForm
         onSubmit={createUav}
         buttonText={<MyAppText>{t('addUav')}</MyAppText>}
+        error={state.errorMessage}
       />
     </Container>
   );

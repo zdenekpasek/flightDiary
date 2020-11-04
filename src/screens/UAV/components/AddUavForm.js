@@ -1,18 +1,38 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, Modal, Alert } from 'react-native';
+import { showMessage, hideMessage } from 'react-native-flash-message';
 import { Picker } from '@react-native-community/picker';
-import { Button, Input } from 'react-native-elements';
+import { Button, Input, CheckBox } from 'react-native-elements';
 import MyAppText from '../../../components/MyAppText';
 import { t, init } from '../../../../localization';
+import { uavPickerOptions } from '../UAVCreate/components/uavPickerOptions';
+import { categoryPickerOptions } from '../UAVCreate/components/categoryPickerOptions';
 
-const AddUavForm = ({ buttonText, onSubmit }) => {
+const AddUavForm = ({ buttonText, onSubmit, error }) => {
   init();
   const [uavName, setUavName] = useState('');
   const [okNumber, setOkNumber] = useState('');
   const [weight, setWeight] = useState('');
-  const [uav, setUav] = useState('');
-  const [category, setCategory] = useState('');
+  const [uav, setUav] = useState('DJI Mavic Air');
+  const [category, setCategory] = useState('Small');
+  const [djiChecked, setDjiChecked] = useState(false);
+  const [hubsanChecked, setHubsanChecked] = useState(false);
+  const [symaChecked, setSymaChecked] = useState(false);
 
+  const filterByBrand = (obj, brand) => {
+    const output = obj.filter((item) => item.brand === brand);
+    return output;
+  };
+
+  const getFilteredPickerItem = (obj, brand) => {
+    return filterByBrand(obj, brand).map((item) => {
+      return <Picker.Item key={item.key} label={item.key} value={item.key} />;
+    });
+  };
+
+  // TODO: resolve flash messages after success, not success
+  // TODO: resolve uav select bug after aplying some filter
+  // it stays on the same position before the filter
   return (
     <View>
       <Input
@@ -37,7 +57,27 @@ const AddUavForm = ({ buttonText, onSubmit }) => {
         value={weight}
         onChangeText={(newWeight) => setWeight(newWeight)}
       />
+      <View style={{ flexDirection: 'row' }}>
+        <CheckBox
+          title="DJI"
+          checked={djiChecked}
+          onPress={() => setDjiChecked(!djiChecked)}
+          containerStyle={styles.checkBoxStyle}
+        />
 
+        <CheckBox
+          title="Hubsan"
+          checked={hubsanChecked}
+          onPress={() => setHubsanChecked(!hubsanChecked)}
+          containerStyle={styles.checkBoxStyle}
+        />
+        <CheckBox
+          title="Syma"
+          checked={symaChecked}
+          onPress={() => setSymaChecked(!symaChecked)}
+          containerStyle={styles.checkBoxStyle}
+        />
+      </View>
       <View style={styles.container}>
         <View>
           <MyAppText
@@ -47,6 +87,7 @@ const AddUavForm = ({ buttonText, onSubmit }) => {
           >
             {t('selectUav')}
           </MyAppText>
+
           <Picker
             selectedValue={uav}
             style={styles.pickerStyle}
@@ -54,8 +95,27 @@ const AddUavForm = ({ buttonText, onSubmit }) => {
             onValueChange={(newSelectedUav) => setUav(newSelectedUav)}
             prompt="Select drone"
           >
-            <Picker.Item label="DJI Mavic Air" value="DJI Mavic Air" />
-            <Picker.Item label="DJI Spark" value="DJI Spark" />
+            {djiChecked || hubsanChecked || symaChecked
+              ? null
+              : uavPickerOptions.map((item) => {
+                  return (
+                    <Picker.Item
+                      key={item.key}
+                      label={item.key}
+                      value={item.key}
+                    />
+                  );
+                })}
+
+            {djiChecked ? getFilteredPickerItem(uavPickerOptions, 'dji') : null}
+
+            {hubsanChecked
+              ? getFilteredPickerItem(uavPickerOptions, 'hubsan')
+              : null}
+
+            {symaChecked
+              ? getFilteredPickerItem(uavPickerOptions, 'syma')
+              : null}
           </Picker>
         </View>
 
@@ -76,10 +136,11 @@ const AddUavForm = ({ buttonText, onSubmit }) => {
               setCategory(newSelectedCategory)
             }
           >
-            <Picker.Item label="Professional" value="Professional" />
-            <Picker.Item label="Custom" value="Custom" />
-            <Picker.Item label="Custom" value="Custom" />
-            <Picker.Item label="Custom" value="Custom" />
+            {categoryPickerOptions.map((item, key) => {
+              return (
+                <Picker.Item key={key} label={item.key} value={item.key} />
+              );
+            })}
           </Picker>
         </View>
       </View>
@@ -104,6 +165,12 @@ const styles = StyleSheet.create({
 
   pickerTitleStyle: {
     alignSelf: 'center',
+  },
+
+  checkBoxStyle: {
+    flex: 1,
+    backgroundColor: null,
+    borderWidth: null,
   },
 });
 

@@ -2,6 +2,7 @@ import React, { Suspense } from 'react';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
+import FlashMessage from 'react-native-flash-message';
 import MainScreen from './src/screens/Main';
 import HomeScreen from './src/screens/Home';
 import LoginScreen from './src/screens/Login';
@@ -61,6 +62,7 @@ export default () => {
       <AuthProvider>
         <UavProvider>
           <App ref={(navigator) => setNavigator(navigator)} />
+          <FlashMessage position="top" />
         </UavProvider>
       </AuthProvider>
     </Suspense>
