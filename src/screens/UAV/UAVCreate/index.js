@@ -1,27 +1,28 @@
 import React, { useContext } from 'react';
-import { View, StyleSheet, Button } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { NavigationEvents } from 'react-navigation';
 import { t, init } from '../../../../localization';
 import AddUavForm from '../components/AddUavForm';
 import Container from '../../../components/Container';
 import MyAppText from '../../../components/MyAppText';
-import Spacer from '../../../components/spacer';
 import { Context as UavContext } from '../../../context/UavContext';
+import { ScrollView } from 'react-native-gesture-handler';
 
 const UAVCreateScreen = () => {
   init();
   const { state, createUav, clearErrorMessage } = useContext(UavContext);
 
-  console.log(state.errorMessage);
-
   return (
-    <Container>
-      <Spacer />
-      <AddUavForm
-        onSubmit={createUav}
-        buttonText={<MyAppText>{t('addUav')}</MyAppText>}
-        error={state.errorMessage}
-      />
-    </Container>
+    <ScrollView>
+      <Container>
+        <NavigationEvents onWillFocus={clearErrorMessage} />
+        <AddUavForm
+          onSubmit={createUav}
+          buttonText={<MyAppText>{t('addUav')}</MyAppText>}
+          error={state.errorMessage}
+        />
+      </Container>
+    </ScrollView>
   );
 };
 
