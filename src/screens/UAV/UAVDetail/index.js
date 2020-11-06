@@ -24,7 +24,10 @@ const UAVDetailScreen = ({ navigation }) => {
       />
       <Spacer />
       <View style={{ flexDirection: 'column' }}>
-        <Button title="Edit" />
+        <Button
+          title="Edit"
+          onPress={() => navigation.navigate('UAVEdit', { _id: _id })}
+        />
         <Spacer />
         <Button title="Delete" />
       </View>

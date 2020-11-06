@@ -39,12 +39,37 @@ const createUav = (dispatch) => async ({
   }
 };
 
+const editUav = (dispatch) => async ({
+  id,
+  uavName,
+  weight,
+  category,
+  uav,
+  okNumber,
+}) => {
+  try {
+    await fdApi.put('/uav/:id', {
+      id,
+      uavName,
+      weight,
+      category,
+      uav,
+      okNumber,
+    });
+  } catch (err) {
+    dispatch({
+      type: 'add_error',
+      payload: 'Something went wrong.',
+    });
+  }
+};
+
 const clearErrorMessage = (dispatch) => () => {
   dispatch({ type: 'clear_error_message' });
 };
 
 export const { Provider, Context } = createDataContext(
   uavReducer,
-  { fetchUavs, createUav, clearErrorMessage },
+  { fetchUavs, createUav, editUav, clearErrorMessage },
   { errorMessage: '' }
 );

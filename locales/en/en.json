@@ -42,5 +42,6 @@
   "singlerotorDrone": "Single rotor",
   "fixedwingHybrid": "Fixed wing hybrid",
   "quadrocopter": "Quadrocopter",
-  "hexacopter": "Hexacopter"
+  "hexacopter": "Hexacopter",
+  "editUav": "Edit UAV"
 }

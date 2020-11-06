@@ -42,5 +42,6 @@
   "singlerotorDrone": "Jeden rotor",
   "fixedwingHybrid": "Fixní křidla hybrid",
   "quadrocopter": "Kvadrokoptéra",
-  "hexacopter": "Hexakoptéra"
+  "hexacopter": "Hexakoptéra",
+  "editUav": "Upravit UAV"
 }

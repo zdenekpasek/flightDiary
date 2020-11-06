@@ -11,6 +11,7 @@ import SettingsScreen from './src/screens/Settings';
 import UAVListScreen from './src/screens/UAV/UAVList';
 import UAVDetailScreen from './src/screens/UAV/UAVDetail';
 import UAVCreateScreen from './src/screens/UAV/UAVCreate';
+import UAVEditScreen from './src/screens/UAV/UAVEdit';
 import MissionListScreen from './src/screens/Mission/MissionList';
 import MissionDetailScreen from './src/screens/Mission/MissionDetail';
 import MissionCreateScreen from './src/screens/Mission/MissionCreate';
@@ -33,6 +34,7 @@ const UAVFlow = createStackNavigator({
   UAVList: UAVListScreen,
   UAVDetail: UAVDetailScreen,
   UAVCreate: UAVCreateScreen,
+  UAVEdit: UAVEditScreen,
 });
 
 UAVFlow.navigationOptions = {
