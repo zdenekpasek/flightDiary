@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, StyleSheet, FlatList } from 'react-native';
 import { Text, Button, ListItem } from 'react-native-elements';
-import { SafeAreaView } from 'react-navigation';
+import { NavigationEvents, SafeAreaView } from 'react-navigation';
 import { t, init } from '../../../localization';
 import Container from '../../components/Container';
 import Header from '../../components/Header';
@@ -10,9 +10,15 @@ import MyAppText from '../../components/MyAppText';
 import Spacer from '../../components/spacer';
 import StatisticsCard from './components/StatisticsCard';
 import UserInfoCard from './components/UserInfoCard';
+import { Context as UserContext } from '../../context/UserContext';
+import { Context as AuthContext } from '../../context/AuthContext';
 
 const HomeScreen = () => {
   init();
+
+  const { state, fetchUser } = useContext(UserContext);
+  const { name, email } = state.user;
+
   const mockData = {
     name: 'Zdeněk Pašek',
     email: 'admin@gmail.com',
@@ -45,12 +51,13 @@ const HomeScreen = () => {
 
   return (
     <Container>
+      <NavigationEvents onWillFocus={fetchUser} />
       <Header title={t('personalInfo')} />
       <HeaderLine />
 
       <UserInfoCard
-        name={mockData.name}
-        email={mockData.email}
+        name={name}
+        email={email}
         state={mockData.state}
         img={mockData.img}
       />

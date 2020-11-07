@@ -6,7 +6,10 @@ import { navigate } from '../navRef';
 const authReducer = (state, action) => {
   switch (action.type) {
     case 'signup':
-      return { errorMsg: '', token: action.payload.token };
+      return {
+        errorMsg: '',
+        token: action.payload.token,
+      };
     case 'add_err':
       return { ...state, errorMsg: action.payload };
     case 'logout':

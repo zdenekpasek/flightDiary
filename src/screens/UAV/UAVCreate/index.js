@@ -12,14 +12,6 @@ const UAVCreateScreen = () => {
   init();
   const { state, createUav, clearErrorMessage } = useContext(UavContext);
 
-  // const initialValues = {
-  //   uavName: '',
-  //   okNumber: '',
-  //   weight: '',
-  //   uav: '',
-  //   category: '',
-  // };
-
   return (
     <ScrollView>
       <Container>

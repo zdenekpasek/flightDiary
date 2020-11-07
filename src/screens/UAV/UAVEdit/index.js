@@ -35,7 +35,7 @@ const UAVEditScreen = ({ navigation }) => {
         <UavForm
           initialValues={initialValues}
           onSubmit={editUav}
-          buttonText={<MyAppText>{t('editUAv')}</MyAppText>}
+          buttonText={<MyAppText>{t('editUav')}</MyAppText>}
           error={state.errorMessage}
         />
       </Container>

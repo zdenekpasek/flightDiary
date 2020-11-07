@@ -18,6 +18,8 @@ import MissionCreateScreen from './src/screens/Mission/MissionCreate';
 import AuthScreen from './src/screens/AuthScreen';
 import { Provider as AuthProvider } from './src/context/AuthContext';
 import { Provider as UavProvider } from './src/context/UavContext';
+import { Provider as UserProvider } from './src/context/UserContext';
+
 import { setNavigator } from './src/navRef';
 
 const missionFlow = createStackNavigator({
@@ -63,7 +65,9 @@ export default () => {
     <Suspense fallback="loading...">
       <AuthProvider>
         <UavProvider>
-          <App ref={(navigator) => setNavigator(navigator)} />
+          <UserProvider>
+            <App ref={(navigator) => setNavigator(navigator)} />
+          </UserProvider>
           <FlashMessage position="top" />
         </UavProvider>
       </AuthProvider>
