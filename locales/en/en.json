@@ -43,5 +43,6 @@
   "fixedwingHybrid": "Fixed wing hybrid",
   "quadrocopter": "Quadrocopter",
   "hexacopter": "Hexacopter",
-  "editUav": "Edit UAV"
+  "editUav": "Edit UAV",
+  "passwordConfirmation": "Confirm password"
 }

@@ -67,6 +67,7 @@ const AuthForm = ({ title, buttonText, onSubmit, errorMessage, isSignup }) => {
               name: '',
               email: '',
               password: '',
+              passwordConfirmation: '',
             }}
             onSubmit={onSubmit}
             validationSchema={authSchema}
@@ -125,6 +126,23 @@ const AuthForm = ({ title, buttonText, onSubmit, errorMessage, isSignup }) => {
                     {errors.password}
                   </MyAppText>
                 )}
+
+                <Input
+                  label={t('passwordConfirmation')}
+                  autoCapitalize="none"
+                  autoCorrect={false}
+                  secureTextEntry={true}
+                  value={values.passwordConfirmation}
+                  onChangeText={handleChange('passwordConfirmation')}
+                  onBlur={() => setFieldTouched('passwordConfirmation')}
+                />
+
+                {touched.passwordConfirmation &&
+                  errors.passwordConfirmation && (
+                    <MyAppText customStyle={styles.errorStyle}>
+                      {errors.passwordConfirmation}
+                    </MyAppText>
+                  )}
 
                 {errorMessage ? (
                   <Text style={{ color: 'red', margin: 10 }}>

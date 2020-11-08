@@ -17,7 +17,6 @@ const UAVCreateScreen = () => {
       <Container>
         <NavigationEvents onWillFocus={clearErrorMessage} />
         <UavForm
-          // initialValues={initialValues}
           onSubmit={createUav}
           buttonText={<MyAppText>{t('addUav')}</MyAppText>}
           error={state.errorMessage}

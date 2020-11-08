@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { View, StyleSheet, FlatList } from 'react-native';
 import { Text, Button, ListItem } from 'react-native-elements';
 import { NavigationEvents, SafeAreaView } from 'react-navigation';
@@ -17,7 +17,6 @@ const HomeScreen = () => {
   init();
 
   const { state, fetchUser } = useContext(UserContext);
-  const { name, email } = state.user;
 
   const mockData = {
     name: 'Zdeněk Pašek',
@@ -56,14 +55,14 @@ const HomeScreen = () => {
       <HeaderLine />
 
       <UserInfoCard
-        name={name}
-        email={email}
+        name={state.user ? state.user.name : 'name'}
+        email={state.user ? state.user.email : 'email'}
         state={mockData.state}
         img={mockData.img}
       />
       <Spacer />
       <Header title={t('statistics')} />
-
+      <HeaderLine />
       <FlatList
         data={data}
         keyExtractor={(item) => item.title}

@@ -19,6 +19,7 @@ import AuthScreen from './src/screens/AuthScreen';
 import { Provider as AuthProvider } from './src/context/AuthContext';
 import { Provider as UavProvider } from './src/context/UavContext';
 import { Provider as UserProvider } from './src/context/UserContext';
+import { Provider as MissionProvider } from './src/context/MissionContext';
 
 import { setNavigator } from './src/navRef';
 
@@ -66,7 +67,9 @@ export default () => {
       <AuthProvider>
         <UavProvider>
           <UserProvider>
-            <App ref={(navigator) => setNavigator(navigator)} />
+            <MissionProvider>
+              <App ref={(navigator) => setNavigator(navigator)} />
+            </MissionProvider>
           </UserProvider>
           <FlashMessage position="top" />
         </UavProvider>

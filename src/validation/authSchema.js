@@ -12,8 +12,8 @@ export const authSchema = Yup.object().shape({
     .min(8, 'Password must be at least 8 characters long')
     .max(30, 'Password cannot be longer than 30 characters')
     .required('Password is required'),
-  //   confirmPassword: Yup.string().oneOf(
-  //     [Yup.ref('password')],
-  //     'Passwords do not match'.required('Confirm password is required')
-  //   ),
+  passwordConfirmation: Yup.string().oneOf(
+    [Yup.ref('password'), null],
+    'Passwords must match'
+  ),
 });

@@ -27,5 +27,5 @@ const clearErrorMessage = (dispatch) => () => {
 export const { Provider, Context } = createDataContext(
   userReducer,
   { fetchUser, clearErrorMessage },
-  { errorMessage: '' }
+  { errorMessage: '', user: { name: '', email: '' } }
 );

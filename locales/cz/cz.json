@@ -43,5 +43,6 @@
   "fixedwingHybrid": "Fixní křidla hybrid",
   "quadrocopter": "Kvadrokoptéra",
   "hexacopter": "Hexakoptéra",
-  "editUav": "Upravit UAV"
+  "editUav": "Upravit UAV",
+  "passwordConfirmation": "Potvrzení hesla"
 }
