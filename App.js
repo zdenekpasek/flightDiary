@@ -20,6 +20,7 @@ import { Provider as AuthProvider } from './src/context/AuthContext';
 import { Provider as UavProvider } from './src/context/UavContext';
 import { Provider as UserProvider } from './src/context/UserContext';
 import { Provider as MissionProvider } from './src/context/MissionContext';
+import { Provider as WeatherProvider } from './src/context/WeatherContext';
 
 import { setNavigator } from './src/navRef';
 
@@ -68,7 +69,9 @@ export default () => {
         <UavProvider>
           <UserProvider>
             <MissionProvider>
-              <App ref={(navigator) => setNavigator(navigator)} />
+              <WeatherProvider>
+                <App ref={(navigator) => setNavigator(navigator)} />
+              </WeatherProvider>
             </MissionProvider>
           </UserProvider>
           <FlashMessage position="top" />

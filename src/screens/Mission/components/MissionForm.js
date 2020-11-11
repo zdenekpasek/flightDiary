@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import { Picker } from '@react-native-community/picker';
 import { Button, Input } from 'react-native-elements';
@@ -7,12 +7,17 @@ import { FontAwesome, Feather } from '@expo/vector-icons';
 import MyAppText from '../../../components/MyAppText';
 import { t, init } from '../../../../localization';
 import { missionSchema } from '../../../validation/missionSchema';
+import { Context as WeatherContext } from '../../../context/WeatherContext';
+import useWeather from '../../../hooks/useWeather';
 
 const MissionForm = ({ buttonText, onSubmit, error, initialValues }) => {
   init();
 
-  const [tmp, setTmp] = useState('18°C');
-  const [wind, setWind] = useState('40m/s');
+  const [getWeather, results, icon, tmp, wind] = useWeather();
+
+  useEffect(() => {
+    getWeather();
+  }, []);
 
   return (
     <View>
@@ -138,7 +143,7 @@ const MissionForm = ({ buttonText, onSubmit, error, initialValues }) => {
                     marginRight: 50,
                   }}
                 >
-                  {tmp}
+                  {`${tmp} °C`}
                 </MyAppText>
               </View>
 
@@ -149,7 +154,7 @@ const MissionForm = ({ buttonText, onSubmit, error, initialValues }) => {
                   fontSize={17}
                   customStyle={{ alignSelf: 'center', marginLeft: 10 }}
                 >
-                  {wind}
+                  {`${wind} m/s`}
                 </MyAppText>
               </View>
             </View>
