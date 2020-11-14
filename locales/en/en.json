@@ -44,5 +44,7 @@
   "quadrocopter": "Quadrocopter",
   "hexacopter": "Hexacopter",
   "editUav": "Edit UAV",
-  "passwordConfirmation": "Confirm password"
+  "passwordConfirmation": "Confirm password",
+  "missionStart": "Mission start: ",
+  "missionEnd": "Mission end: "
 }

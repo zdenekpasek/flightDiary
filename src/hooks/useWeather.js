@@ -4,27 +4,29 @@ import config from '../config';
 
 export default () => {
   const [results, setResults] = useState([]);
-  const [tmp, setTmp] = useState('');
-  const [wind, setWind] = useState('');
-  const [icon, setIcon] = useState();
+  const [tmp, setTmp] = useState(null);
+  const [wind, setWind] = useState(null);
+  const [icon, setIcon] = useState(null);
+  const [positionName, setPositionName] = useState(null);
 
-  const getWeather = async () => {
+  const getWeather = async (lat, long) => {
     try {
-      const endpoint = `?q=London&units=metric&appid=${config.API_KEY_W}`;
+      const endpoint = `?lat=${lat}&lon=${long}&units=metric&appid=${config.API_KEY_W}`;
       const response = await openWeatherApi.get(endpoint);
       const iconName = response.data.weather[0].icon;
       setResults(response.data);
       setTmp(response.data.main.temp);
       setWind(response.data.wind.speed);
       setIcon(iconName);
+      setPositionName(response.data.name);
     } catch (err) {
       console.log(err);
     }
   };
 
-  useEffect(() => {
-    getWeather();
-  }, []);
+  // useEffect(() => {
+  //   getWeather();
+  // }, []);
 
-  return [getWeather, results, icon, tmp, wind];
+  return [getWeather, results, icon, tmp, wind, positionName];
 };

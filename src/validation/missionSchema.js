@@ -5,8 +5,8 @@ export const missionSchema = Yup.object().shape({
     .min(3, 'Name must be atleast 3 characters long')
     .max(30, 'Name cannot be longer than 30 characters.')
     .required('Name is required'),
-  pilot: Yup.string().required('Pilot is required'),
-  gps: Yup.string().required('GPS is required'),
+  pilot: Yup.string(),
+  gps: Yup.string(),
   date: Yup.string().required('Date is required'),
   time: Yup.string().required('Time is required'),
   usedBatteries: Yup.string()

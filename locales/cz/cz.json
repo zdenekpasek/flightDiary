@@ -44,5 +44,7 @@
   "quadrocopter": "Kvadrokoptéra",
   "hexacopter": "Hexakoptéra",
   "editUav": "Upravit UAV",
-  "passwordConfirmation": "Potvrzení hesla"
+  "passwordConfirmation": "Potvrzení hesla",
+  "missionStart": "Start mise: ",
+  "missionEnd": "Konec mise: "
 }

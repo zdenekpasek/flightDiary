@@ -18,13 +18,38 @@ const fetchMissions = (dispatch) => async () => {
 
 // TODO: change inputs
 const createMission = (dispatch) => async ({
-  uavName,
-  weight,
-  category,
+  missionName,
   uav,
-  okNumber,
+  gps,
+  date,
+  time,
+  usedBatteries,
+  tmp,
+  wind,
+  desc,
 }) => {
-  await fdApi.post('/mission', { uavName, weight, category, uav, okNumber });
+  console.log(
+    missionName,
+    uav,
+    gps,
+    date,
+    time,
+    usedBatteries,
+    tmp,
+    wind,
+    desc
+  );
+  await fdApi.post('/mission', {
+    missionName,
+    uav,
+    gps,
+    date,
+    time,
+    usedBatteries,
+    tmp,
+    wind,
+    desc,
+  });
   navigate('MissionList');
 };
 
