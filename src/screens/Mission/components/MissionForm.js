@@ -23,7 +23,7 @@ import useLocation from '../../../hooks/useLocation';
 import useGeoLocation from '../../../hooks/useGeoLocation';
 import useDateTime from '../../../hooks/useDateTime';
 
-const MissionForm = ({ buttonText, onSubmit, error, initialValues }) => {
+const MissionForm = ({ buttonText, onSubmit, error, initialValues, uavs }) => {
   init();
 
   const [getWeather, results, icon, tmp, wind, positionName] = useWeather();
@@ -40,7 +40,7 @@ const MissionForm = ({ buttonText, onSubmit, error, initialValues }) => {
     isEndDatePickerVisible,
   ] = useDateTime();
   const [gps, setGps] = useState('');
-  const [date, setDate] = useState(moment().format('LL'));
+  const [uav, setUav] = useState('');
 
   const loc = useGeoLocation();
 
@@ -66,10 +66,10 @@ const MissionForm = ({ buttonText, onSubmit, error, initialValues }) => {
               : {
                   missionName: '',
                   pilot: '',
-                  uav: 'sdsd',
+                  uav,
                   gps,
-                  date: '',
-                  time: '',
+                  missionStart: startMissionDateTime,
+                  missionEnd: endMissionDateTime,
                   usedBatteries: '',
                   tmp,
                   wind,
@@ -158,7 +158,7 @@ const MissionForm = ({ buttonText, onSubmit, error, initialValues }) => {
                   <View style={styles.dateStyle}>
                     <TouchableOpacity onPress={showStartDatePicker}>
                       <MyAppText customStyle={{ padding: 3 }} fontSize={18}>
-                        {startMissionDateTime}
+                        {moment(startMissionDateTime).format('lll')}
                       </MyAppText>
                     </TouchableOpacity>
                   </View>
@@ -174,7 +174,7 @@ const MissionForm = ({ buttonText, onSubmit, error, initialValues }) => {
                   <View style={styles.dateStyle}>
                     <TouchableOpacity onPress={showEndDatePicker}>
                       <MyAppText customStyle={{ padding: 3 }} fontSize={18}>
-                        {endMissionDateTime}
+                        {moment(endMissionDateTime).format('lll')}
                       </MyAppText>
                     </TouchableOpacity>
                   </View>
@@ -231,6 +231,7 @@ const MissionForm = ({ buttonText, onSubmit, error, initialValues }) => {
                   </MyAppText>
                 </View>
               </View>
+
               <Input
                 label={t('desc')}
                 autoCorrect={false}
@@ -244,6 +245,33 @@ const MissionForm = ({ buttonText, onSubmit, error, initialValues }) => {
                 </MyAppText>
               )}
 
+              <View style={{ flexDirection: 'row' }}>
+                <MyAppText
+                  fontWeight="bold"
+                  fontSize={18}
+                  customStyle={{ alignSelf: 'center' }}
+                >
+                  {t('selectUav')}
+                </MyAppText>
+
+                <Picker
+                  selectedValue={values.uav}
+                  style={styles.pickerStyle}
+                  mode="dropdown"
+                  onValueChange={handleChange('uav')}
+                  prompt="Select drone"
+                >
+                  {uavs.map((item) => {
+                    return (
+                      <Picker.Item
+                        key={item._id}
+                        label={item.uavName}
+                        value={item.uavName}
+                      />
+                    );
+                  })}
+                </Picker>
+              </View>
               <Button
                 title={buttonText.props.children}
                 onPress={() => {
@@ -251,8 +279,8 @@ const MissionForm = ({ buttonText, onSubmit, error, initialValues }) => {
                     values.missionName,
                     values.uav,
                     values.gps,
-                    values.date,
-                    values.time,
+                    values.missionStart,
+                    values.missionEnd,
                     values.usedBatteries,
                     values.tmp,
                     values.wind,
@@ -280,6 +308,7 @@ const styles = StyleSheet.create({
 
   pickerStyle: {
     width: 160,
+    flex: 1,
   },
 
   pickerTitleStyle: {

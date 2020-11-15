@@ -3,10 +3,10 @@ import moment from 'moment';
 
 export default () => {
   const [startMissionDateTime, setStartMissionDateTime] = useState(
-    moment().format('lll')
+    moment().format()
   );
   const [endMissionDateTime, setEndMissionDateTime] = useState(
-    moment().format('lll')
+    moment().format()
   );
   const [isStartDatePickerVisible, setStartDatePickerVisibility] = useState(
     false
@@ -30,12 +30,12 @@ export default () => {
   };
 
   const handleStartDateConfirm = (chosenDate) => {
-    setStartMissionDateTime(moment(chosenDate).format('lll'));
+    setStartMissionDateTime(moment(chosenDate).format());
     hideStartDatePicker();
   };
 
   const handleEndDateConfirm = (chosenDate) => {
-    setEndMissionDateTime(moment(chosenDate).format('lll'));
+    setEndMissionDateTime(moment(chosenDate).format());
     hideEndDatePicker();
   };
 

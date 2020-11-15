@@ -1,19 +1,23 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, StyleSheet, FlatList } from 'react-native';
 import { Text, Button } from 'react-native-elements';
 import { FontAwesome } from '@expo/vector-icons';
+import { NavigationEvents } from 'react-navigation';
 import { t, init } from '../../../../localization';
 import Container from '../../../components/Container';
 import Header from '../../../components/Header';
 import HeaderLine from '../../../components/HeaderLine';
 import MissionListItem from '../components/MissionListItem';
 import { data } from '../../../mock/missionData_mock';
+import { Context as MissionContext } from '../../../context/MissionContext';
 
 const MissionListScreen = ({ navigation }) => {
   init();
-
+  const { state, fetchMissions } = useContext(MissionContext);
+  console.log(state ? state : null);
   return (
     <Container>
+      <NavigationEvents onWillFocus={fetchMissions} />
       <View style={{ flexDirection: 'row' }}>
         <Header customStyle={{ flex: 1 }} title={t('missionList')} />
         <Button
@@ -32,8 +36,8 @@ const MissionListScreen = ({ navigation }) => {
       <HeaderLine />
 
       <FlatList
-        data={data}
-        keyExtractor={(item) => item.name}
+        data={state.missions}
+        keyExtractor={(item) => item._id}
         horizontal={false}
         showsVerticalScrollIndicator={false}
         renderItem={({ item }) => {

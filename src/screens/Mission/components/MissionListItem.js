@@ -1,5 +1,6 @@
 import React from 'react';
 import TouchableScale from 'react-native-touchable-scale';
+import moment from 'moment';
 import { Avatar, ListItem } from 'react-native-elements';
 import { View, StyleSheet } from 'react-native';
 import MyAppText from '../../../components/MyAppText';
@@ -17,16 +18,18 @@ const MissionListItem = ({ item, onPress }) => {
     >
       <ListItem.Content>
         <ListItem.Title style={styles.colorStyle}>
-          <MyAppText fontWeight="bold">{item.name}</MyAppText>
+          <MyAppText fontWeight="bold">{item.missionName}</MyAppText>
         </ListItem.Title>
 
         <View style={{ flexDirection: 'row' }}>
           <ListItem.Subtitle style={styles.colorStyle}>
-            <MyAppText fontWeight="light">{item.date}</MyAppText>
+            <MyAppText fontWeight="light">
+              {moment(item.missionStart).format('DD/MM/YYYY')}
+            </MyAppText>
           </ListItem.Subtitle>
 
           <ListItem.Subtitle style={[styles.colorStyle, styles.timeStyle]}>
-            <MyAppText fontWeight="light">{item.time}</MyAppText>
+            <MyAppText fontWeight="light">{`${item.flightTime} min`}</MyAppText>
           </ListItem.Subtitle>
         </View>
       </ListItem.Content>

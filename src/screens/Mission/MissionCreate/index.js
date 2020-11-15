@@ -9,22 +9,23 @@ import MyAppText from '../../../components/MyAppText';
 import Spacer from '../../../components/spacer';
 import MissionForm from '../components/MissionForm';
 import { Context as MissionContext } from '../../../context/MissionContext';
+import { Context as UavContext } from '../../../context/UavContext';
 
 const MissionCreateScreen = () => {
   init();
 
-  const { state, createMission, clearErrorMessage } = useContext(
-    MissionContext
-  );
+  const { createMission, clearErrorMessage } = useContext(MissionContext);
+
+  const { state, fetchUavs } = useContext(UavContext);
 
   return (
     <ScrollView>
       <Container>
-        <NavigationEvents onWillFocus={clearErrorMessage} />
+        <NavigationEvents onWillFocus={fetchUavs} />
         <MissionForm
           buttonText={<MyAppText>{t('addMission')}</MyAppText>}
           onSubmit={createMission}
-          error={state.errorMessage}
+          uavs={state ? state.uavs : 'uavs'}
         />
       </Container>
     </ScrollView>
