@@ -1,12 +1,19 @@
 import { useState } from 'react';
 import moment from 'moment';
 
-export default () => {
+export default (editMissionStart, editMissionEnd) => {
+  const setStateByMode = (par) => {
+    if (par === null) {
+      return moment().format();
+    } else {
+      return moment(par).format();
+    }
+  };
   const [startMissionDateTime, setStartMissionDateTime] = useState(
-    moment().format()
+    setStateByMode(editMissionStart)
   );
   const [endMissionDateTime, setEndMissionDateTime] = useState(
-    moment().format()
+    setStateByMode(editMissionEnd)
   );
   const [isStartDatePickerVisible, setStartDatePickerVisibility] = useState(
     false

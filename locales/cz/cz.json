@@ -46,5 +46,13 @@
   "editUav": "Upravit UAV",
   "passwordConfirmation": "Potvrzení hesla",
   "missionStart": "Start mise: ",
-  "missionEnd": "Konec mise: "
+  "missionEnd": "Konec mise: ",
+  "basicInfo": "Základní informace",
+  "dateAndTime": "Datum a čas",
+  "weather": "Počasí",
+  "others": "Ostatní",
+  "flightTimeMission": "Celková doba letu: ",
+  "usedBatteries": "Použité baterie: ",
+  "description": "Popis: ",
+  "editMission": "Upravit misi"
 }

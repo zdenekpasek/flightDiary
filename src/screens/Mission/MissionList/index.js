@@ -10,10 +10,12 @@ import HeaderLine from '../../../components/HeaderLine';
 import MissionListItem from '../components/MissionListItem';
 import { data } from '../../../mock/missionData_mock';
 import { Context as MissionContext } from '../../../context/MissionContext';
+import { Context as UavContext } from '../../../context/UavContext';
 
 const MissionListScreen = ({ navigation }) => {
   init();
   const { state, fetchMissions } = useContext(MissionContext);
+
   console.log(state ? state : null);
   return (
     <Container>
@@ -44,7 +46,9 @@ const MissionListScreen = ({ navigation }) => {
           return (
             <MissionListItem
               item={item}
-              onPress={() => navigation.navigate('MissionDetail')}
+              onPress={() =>
+                navigation.navigate('MissionDetail', { _id: item._id })
+              }
             />
           );
         }}

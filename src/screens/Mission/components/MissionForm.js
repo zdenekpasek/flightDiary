@@ -19,13 +19,20 @@ import { t, init } from '../../../../localization';
 import { missionSchema } from '../../../validation/missionSchema';
 import { Context as WeatherContext } from '../../../context/WeatherContext';
 import useWeather from '../../../hooks/useWeather';
-import useLocation from '../../../hooks/useLocation';
 import useGeoLocation from '../../../hooks/useGeoLocation';
 import useDateTime from '../../../hooks/useDateTime';
 
-const MissionForm = ({ buttonText, onSubmit, error, initialValues, uavs }) => {
+const MissionForm = ({
+  buttonText,
+  onSubmit,
+  error,
+  initialValues,
+  uavs,
+  missionEdit,
+}) => {
   init();
 
+  console.log(initialValues);
   const [getWeather, results, icon, tmp, wind, positionName] = useWeather();
   const [
     showStartDatePicker,
@@ -38,25 +45,48 @@ const MissionForm = ({ buttonText, onSubmit, error, initialValues, uavs }) => {
     endMissionDateTime,
     isStartDatePickerVisible,
     isEndDatePickerVisible,
-  ] = useDateTime();
+  ] = useDateTime(
+    initialValues ? initialValues.missionStart : null,
+    initialValues ? initialValues.missionEnd : null
+  );
   const [gps, setGps] = useState('');
   const [uav, setUav] = useState('');
-
-  const loc = useGeoLocation();
 
   const formatGPS = (lat, long) => {
     const result = `${lat},${long}`;
     return result;
   };
 
-  useEffect(() => {
-    if (loc) {
-      getWeather(loc.coords.latitude, loc.coords.longitude);
-      setGps(formatGPS(loc.coords.latitude, loc.coords.longitude));
-    }
-  }, [loc]);
+  const convertStringToDateObject = (stringDate, dateObject) => {
+    const momentDate = moment(stringDate);
+    const utcDate = momentDate.utc().format();
+    dateObject = new Date(utcDate);
+  };
 
-  if (loc !== null) {
+  let loc = null;
+  let initialStartDate = null;
+  let initialEndDate = null;
+  if (!missionEdit) {
+    loc = useGeoLocation();
+    initialStartDate = new Date();
+    initialEndDate = new Date();
+    useEffect(() => {
+      if (loc) {
+        getWeather(loc.coords.latitude, loc.coords.longitude);
+        setGps(formatGPS(loc.coords.latitude, loc.coords.longitude));
+      }
+    }, [loc]);
+  } else {
+    // TODO: refactor this block
+    const startDateMoment = moment(initialValues.missionStart);
+    const startDateUtc = startDateMoment.utc().format();
+    const endDateMoment = moment(initialValues.missionEnd);
+    const endDateUtc = endDateMoment.utc().format();
+    initialStartDate = new Date(startDateUtc);
+    initialEndDate = new Date(endDateUtc);
+  }
+
+  if ((loc !== null && uavs) || (missionEdit && uavs)) {
     return (
       <View>
         <Formik
@@ -138,6 +168,7 @@ const MissionForm = ({ buttonText, onSubmit, error, initialValues, uavs }) => {
                   onConfirm={handleStartDateConfirm}
                   onCancel={hideStartDatePicker}
                   isDarkModeEnabled={false}
+                  date={initialStartDate}
                 />
                 <DateTimePickerModal
                   isVisible={isEndDatePickerVisible}
@@ -216,7 +247,7 @@ const MissionForm = ({ buttonText, onSubmit, error, initialValues, uavs }) => {
                       marginRight: 50,
                     }}
                   >
-                    {`${tmp} °C`}
+                    {missionEdit ? `${values.tmp} °C` : `${tmp} °C`}
                   </MyAppText>
                 </View>
 
@@ -227,7 +258,7 @@ const MissionForm = ({ buttonText, onSubmit, error, initialValues, uavs }) => {
                     fontSize={17}
                     customStyle={{ alignSelf: 'center', marginLeft: 10 }}
                   >
-                    {`${wind} m/s`}
+                    {missionEdit ? `${values.wind} °C` : `${wind} m/s`}
                   </MyAppText>
                 </View>
               </View>

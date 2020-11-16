@@ -26,6 +26,7 @@ const MissionCreateScreen = () => {
           buttonText={<MyAppText>{t('addMission')}</MyAppText>}
           onSubmit={createMission}
           uavs={state ? state.uavs : 'uavs'}
+          missionEdit={false}
         />
       </Container>
     </ScrollView>

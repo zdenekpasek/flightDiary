@@ -46,5 +46,13 @@
   "editUav": "Edit UAV",
   "passwordConfirmation": "Confirm password",
   "missionStart": "Mission start: ",
-  "missionEnd": "Mission end: "
+  "missionEnd": "Mission end: ",
+  "basicInfo": "Basic information",
+  "dateAndTime": "Date and time",
+  "weather": "Weather",
+  "others": "Others",
+  "flightTimeMission": "Flight time: ",
+  "usedBatteries": "Used batteries: ",
+  "description": "Description: ",
+  "editMission": "Edit mission"
 }

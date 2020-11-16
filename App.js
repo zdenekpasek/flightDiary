@@ -15,6 +15,7 @@ import UAVEditScreen from './src/screens/UAV/UAVEdit';
 import MissionListScreen from './src/screens/Mission/MissionList';
 import MissionDetailScreen from './src/screens/Mission/MissionDetail';
 import MissionCreateScreen from './src/screens/Mission/MissionCreate';
+import MissionEditScreen from './src/screens/Mission/MissionEdit';
 import AuthScreen from './src/screens/AuthScreen';
 import { Provider as AuthProvider } from './src/context/AuthContext';
 import { Provider as UavProvider } from './src/context/UavContext';
@@ -28,6 +29,7 @@ const missionFlow = createStackNavigator({
   MissionList: MissionListScreen,
   MissionDetail: MissionDetailScreen,
   MissionCreate: MissionCreateScreen,
+  MissionEdit: MissionEditScreen,
 });
 
 missionFlow.navigationOptions = {
