@@ -32,7 +32,6 @@ const MissionForm = ({
 }) => {
   init();
 
-  console.log(initialValues);
   const [getWeather, results, icon, tmp, wind, positionName] = useWeather();
   const [
     showStartDatePicker,
@@ -176,6 +175,7 @@ const MissionForm = ({
                   onConfirm={handleEndDateConfirm}
                   onCancel={hideEndDatePicker}
                   isDarkModeEnabled={false}
+                  date={initialEndDate}
                 />
 
                 <View style={{ flexDirection: 'row', marginBottom: 20 }}>
