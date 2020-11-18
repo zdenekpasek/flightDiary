@@ -19,7 +19,8 @@ const fetchPdf = (dispatch) => async () => {};
 
 const createPdf = (dispatch) => async () => {
   try {
-    await fdApi.post('/pdfCreate');
+    const response = await fdApi.post('/createPdf');
+    console.log(response.status);
   } catch (err) {
     dispatch({
       type: 'add_error',

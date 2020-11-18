@@ -20,12 +20,21 @@ const fetchUser = (dispatch) => async () => {
   dispatch({ type: 'fetch_user', payload: response.data });
 };
 
+const fetchStats = (dispatch) => async () => {
+  const response = await fdApi.get('/user/stats');
+  dispatch({ type: 'fetch_stats', payload: response.data });
+};
+
 const clearErrorMessage = (dispatch) => () => {
   dispatch({ type: 'clear_error_message' });
 };
 
 export const { Provider, Context } = createDataContext(
   userReducer,
-  { fetchUser, clearErrorMessage },
-  { errorMessage: '', user: { name: '', email: '' } }
+  { fetchUser, fetchStats, clearErrorMessage },
+  {
+    errorMessage: '',
+    user: { name: '', email: '' },
+    stats: { allMissions: '', flightTime: '', allUavs: '' },
+  }
 );

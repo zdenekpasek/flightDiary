@@ -11,19 +11,20 @@ import MissionListItem from '../components/MissionListItem';
 import { data } from '../../../mock/missionData_mock';
 import { Context as MissionContext } from '../../../context/MissionContext';
 import { Context as UavContext } from '../../../context/UavContext';
+import { Context as PdfContext } from '../../../context/PdfContext';
 
 const MissionListScreen = ({ navigation }) => {
   init();
   const { state, fetchMissions } = useContext(MissionContext);
+  const { createPdf } = useContext(PdfContext);
 
-  console.log(state ? state : null);
   return (
     <Container>
       <NavigationEvents onWillFocus={fetchMissions} />
       <View style={{ flexDirection: 'row' }}>
         <Header customStyle={{ flex: 1 }} title={t('missionList')} />
         <Button
-          onPress={() => navigation.navigate('MissionCreate')}
+          onPress={() => createPdf()}
           type="clear"
           icon={<FontAwesome name="share-square" size={30} color="#374355" />}
         />

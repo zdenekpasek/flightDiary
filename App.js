@@ -22,6 +22,7 @@ import { Provider as UavProvider } from './src/context/UavContext';
 import { Provider as UserProvider } from './src/context/UserContext';
 import { Provider as MissionProvider } from './src/context/MissionContext';
 import { Provider as WeatherProvider } from './src/context/WeatherContext';
+import { Provider as PdfProvider } from './src/context/PdfContext';
 
 import { setNavigator } from './src/navRef';
 
@@ -72,7 +73,9 @@ export default () => {
           <UserProvider>
             <MissionProvider>
               <WeatherProvider>
-                <App ref={(navigator) => setNavigator(navigator)} />
+                <PdfProvider>
+                  <App ref={(navigator) => setNavigator(navigator)} />
+                </PdfProvider>
               </WeatherProvider>
             </MissionProvider>
           </UserProvider>
