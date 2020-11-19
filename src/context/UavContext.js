@@ -40,7 +40,7 @@ const createUav = (dispatch) => async ({
 };
 
 const editUav = (dispatch) => async ({
-  id,
+  _id,
   uavName,
   weight,
   category,
@@ -48,14 +48,14 @@ const editUav = (dispatch) => async ({
   okNumber,
 }) => {
   try {
-    await fdApi.put('/uav/:id', {
-      id,
+    await fdApi.put(`/uav/${_id}`, {
       uavName,
       weight,
       category,
       uav,
       okNumber,
     });
+    navigate('UAVList');
   } catch (err) {
     dispatch({
       type: 'add_error',

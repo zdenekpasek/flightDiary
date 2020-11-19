@@ -4,6 +4,8 @@ import { navigate } from '../navRef';
 
 const missionReducer = (state, action) => {
   switch (action.type) {
+    case 'add_error':
+      return { ...state, errorMessage: action.payload };
     case 'fetch_missions':
       return action.payload;
     default:
@@ -41,8 +43,35 @@ const createMission = (dispatch) => async ({
   navigate('MissionList');
 };
 
+const ediMission = (dispatch) => async ({
+  id,
+  missionName,
+  uav,
+  missionStart,
+  missionEnd,
+  usedBatteries,
+  desc,
+}) => {
+  try {
+    await fdApi.put('/mission/:id', {
+      id,
+      missionName,
+      uav,
+      missionStart,
+      missionEnd,
+      usedBatteries,
+      desc,
+    });
+  } catch (err) {
+    dispatch({
+      type: 'add_error',
+      payload: 'Something went wrong.',
+    });
+  }
+};
+
 export const { Provider, Context } = createDataContext(
   missionReducer,
-  { fetchMissions, createMission },
-  {}
+  { fetchMissions, createMission, ediMission },
+  { errorMessage: '' }
 );

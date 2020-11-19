@@ -10,6 +10,16 @@ const userReducer = (state, action) => {
       return { ...state, errorMessage: '' };
     case 'fetch_user':
       return action.payload;
+
+    case 'fetch_stats':
+      return {
+        ...state,
+        stats: {
+          totalMissions: action.payload.stats.totalMissions,
+          totalUavs: action.payload.stats.totalUavs,
+          totalFlightTime: action.payload.stats.totalFlightTime,
+        },
+      };
     default:
       return state;
   }
@@ -34,7 +44,7 @@ export const { Provider, Context } = createDataContext(
   { fetchUser, fetchStats, clearErrorMessage },
   {
     errorMessage: '',
-    user: { name: '', email: '' },
-    stats: { allMissions: '', flightTime: '', allUavs: '' },
+    user: {},
+    stats: { totalMissions: 0, totalUavs: 0, totalFlightTime: 0 },
   }
 );

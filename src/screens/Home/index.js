@@ -16,7 +16,8 @@ import { Context as AuthContext } from '../../context/AuthContext';
 const HomeScreen = () => {
   init();
 
-  const { state, fetchUser } = useContext(UserContext);
+  const { state, fetchUser, fetchStats } = useContext(UserContext);
+  let statsData = {};
 
   const mockData = {
     name: 'Zdeněk Pašek',
@@ -26,34 +27,40 @@ const HomeScreen = () => {
       'https://raw.githubusercontent.com/AboutReact/sampleresource/master/old_logo.png',
   };
 
-  const data = [
-    {
-      title: t('missions'),
-      value: 10,
-    },
+  if (state.stats) {
+    statsData = [
+      {
+        title: t('missions'),
+        value: state.stats.totalMissions,
+      },
 
-    {
-      title: t('flightTime'),
-      value: 14,
-    },
+      {
+        title: t('flightTime'),
+        value: `${state.stats.totalFlightTime} min`,
+      },
 
-    {
-      title: 'UAVs',
-      value: 2,
-    },
+      {
+        title: 'UAVs',
+        value: state.stats.totalUavs,
+      },
 
-    {
-      title: t('distance'),
-      value: 19999,
-    },
-  ];
+      {
+        title: t('distance'),
+        value: 19999,
+      },
+    ];
+  }
 
   return (
     <Container>
-      <NavigationEvents onWillFocus={fetchUser} />
+      <NavigationEvents
+        onWillFocus={() => {
+          fetchUser();
+          fetchStats();
+        }}
+      />
       <Header title={t('personalInfo')} />
       <HeaderLine />
-
       <UserInfoCard
         name={state.user ? state.user.name : 'name'}
         email={state.user ? state.user.email : 'email'}
@@ -64,7 +71,7 @@ const HomeScreen = () => {
       <Header title={t('statistics')} />
       <HeaderLine />
       <FlatList
-        data={data}
+        data={state.stats ? statsData : null}
         keyExtractor={(item) => item.title}
         scrollEnabled={false}
         numColumns={2}
