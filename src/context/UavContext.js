@@ -64,12 +64,24 @@ const editUav = (dispatch) => async ({
   }
 };
 
+const deleteUav = (dispatch) => async ({ _id }) => {
+  try {
+    await fdApi.delete(`/uav/${_id}`);
+    navigate('UAVList');
+  } catch (err) {
+    dispatch({
+      type: 'add_error',
+      payload: 'Something went wrong.',
+    });
+  }
+};
+
 const clearErrorMessage = (dispatch) => () => {
   dispatch({ type: 'clear_error_message' });
 };
 
 export const { Provider, Context } = createDataContext(
   uavReducer,
-  { fetchUavs, createUav, editUav, clearErrorMessage },
+  { fetchUavs, createUav, editUav, deleteUav, clearErrorMessage },
   { errorMessage: '' }
 );

@@ -43,8 +43,8 @@ const createMission = (dispatch) => async ({
   navigate('MissionList');
 };
 
-const ediMission = (dispatch) => async ({
-  id,
+const editMission = (dispatch) => async ({
+  _id,
   missionName,
   uav,
   missionStart,
@@ -52,9 +52,10 @@ const ediMission = (dispatch) => async ({
   usedBatteries,
   desc,
 }) => {
+  console.log(missionStart);
+  console.log(missionEnd);
   try {
-    await fdApi.put('/mission/:id', {
-      id,
+    await fdApi.put(`/mission/${_id}`, {
       missionName,
       uav,
       missionStart,
@@ -62,6 +63,7 @@ const ediMission = (dispatch) => async ({
       usedBatteries,
       desc,
     });
+    navigate('MissionList');
   } catch (err) {
     dispatch({
       type: 'add_error',
@@ -72,6 +74,6 @@ const ediMission = (dispatch) => async ({
 
 export const { Provider, Context } = createDataContext(
   missionReducer,
-  { fetchMissions, createMission, ediMission },
+  { fetchMissions, createMission, editMission },
   { errorMessage: '' }
 );

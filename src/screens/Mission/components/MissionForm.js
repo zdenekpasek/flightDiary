@@ -22,6 +22,7 @@ import useWeather from '../../../hooks/useWeather';
 import useGeoLocation from '../../../hooks/useGeoLocation';
 import useDateTime from '../../../hooks/useDateTime';
 
+// TODO: Fix changing date and time on mission edit, doesnt work, puts there old data
 const MissionForm = ({
   buttonText,
   onSubmit,
@@ -50,16 +51,9 @@ const MissionForm = ({
   );
   const [gps, setGps] = useState('');
   const [uav, setUav] = useState('');
-
   const formatGPS = (lat, long) => {
     const result = `${lat},${long}`;
     return result;
-  };
-
-  const convertStringToDateObject = (stringDate, dateObject) => {
-    const momentDate = moment(stringDate);
-    const utcDate = momentDate.utc().format();
-    dateObject = new Date(utcDate);
   };
 
   let loc = null;
@@ -91,7 +85,11 @@ const MissionForm = ({
         <Formik
           initialValues={
             initialValues
-              ? initialValues
+              ? (initialValues = {
+                  ...initialValues,
+                  missionStart: startMissionDateTime,
+                  missionEnd: endMissionDateTime,
+                })
               : {
                   missionName: '',
                   pilot: '',
@@ -303,20 +301,30 @@ const MissionForm = ({
                   })}
                 </Picker>
               </View>
+
               <Button
                 title={buttonText.props.children}
                 onPress={() => {
-                  handleSubmit(
-                    values.missionName,
-                    values.uav,
-                    values.gps,
-                    values.missionStart,
-                    values.missionEnd,
-                    values.usedBatteries,
-                    values.tmp,
-                    values.wind,
-                    values.desc
-                  );
+                  missionEdit
+                    ? handleSubmit(
+                        values.missionName,
+                        values.uav,
+                        values.missionStart,
+                        values.missionEnd,
+                        values.usedBatteries,
+                        values.desc
+                      )
+                    : handleSubmit(
+                        values.missionName,
+                        values.uav,
+                        values.gps,
+                        values.missionStart,
+                        values.missionEnd,
+                        values.usedBatteries,
+                        values.tmp,
+                        values.wind,
+                        values.desc
+                      );
                 }}
               />
             </View>

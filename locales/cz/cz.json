@@ -54,5 +54,10 @@
   "flightTimeMission": "Celková doba letu: ",
   "usedBatteries": "Použité baterie: ",
   "description": "Popis: ",
-  "editMission": "Upravit misi"
+  "editMission": "Upravit misi",
+  "deleteUavQuestion": "Opravdu chcete smazat toto UAV?",
+  "yes": "ANO",
+  "no": "NE",
+  "edit": "Upravit",
+  "delete": "Smazat"
 }

@@ -54,5 +54,8 @@
   "flightTimeMission": "Flight time: ",
   "usedBatteries": "Used batteries: ",
   "description": "Description: ",
-  "editMission": "Edit mission"
+  "editMission": "Edit mission",
+  "deleteUavQuestion": "Are you sure to delete this UAV?",
+  "yes": "YES",
+  "no": "NO"
 }
