@@ -72,8 +72,21 @@ const editMission = (dispatch) => async ({
   }
 };
 
+
+const deleteMission = (dispatch) => async ({ _id }) => {
+  try {
+    await fdApi.delete(`/mission/${_id}`);
+    navigate('MissionList');
+  } catch (err) {
+    dispatch({
+      type: 'add_error',
+      payload: 'Something went wrong.',
+    });
+  }
+};
+
 export const { Provider, Context } = createDataContext(
   missionReducer,
-  { fetchMissions, createMission, editMission },
+  { fetchMissions, createMission, editMission, deleteMission },
   { errorMessage: '' }
 );

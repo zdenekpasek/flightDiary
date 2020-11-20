@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Text, Button } from 'react-native-elements';
 import { SafeAreaView } from 'react-navigation';
+import { ConfirmDialog } from 'react-native-simple-dialogs';
 import Container from '../../../components/Container';
 import Header from '../../../components/Header';
 import MyAppText from '../../../components/MyAppText';
@@ -24,6 +25,23 @@ const MissionDetailScreen = ({ navigation }) => {
       <MissionInfoCard mission={mission} />
       <Spacer />
       <View style={{ flexDirection: 'row' }}>
+        <ConfirmDialog
+          title="Mission"
+          message={t('deleteUavQuestion')}
+          visible={dialogVisible}
+          onTouchOutside={() => setDialogVisible(false)}
+          positiveButton={{
+            title: t('yes'),
+            onPress: () => {
+              deleteMission({ _id });
+              setDialogVisible(false);
+            },
+          }}
+          negativeButton={{
+            title: t('no'),
+            onPress: () => setDialogVisible(false),
+          }}
+        />
         <View style={{ flex: 1 }}>
           <Button
             title={t('delete')}
