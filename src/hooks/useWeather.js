@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import openWeatherApi from '../services/api/openWeatherApi';
 import config from '../config';
 
@@ -23,10 +23,6 @@ export default () => {
       console.log(err);
     }
   };
-
-  // useEffect(() => {
-  //   getWeather();
-  // }, []);
 
   return [getWeather, results, icon, tmp, wind, positionName];
 };

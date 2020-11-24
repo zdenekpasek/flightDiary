@@ -1,19 +1,21 @@
 import * as Yup from 'yup';
+import { t, init } from '../../localization';
 
+init();
 export const authSchema = Yup.object().shape({
   name: Yup.string()
-    .min(3, 'Name must be at least 3 characters long')
-    .max(20, 'Name cannot be longer than 20 characters.')
-    .required('Name is required'),
+    .min(3, t('nameMinMessage'))
+    .max(20, t('nameMaxMessage'))
+    .required(t('nameReqMessage')),
   email: Yup.string()
-    .email('Please enter valid email')
-    .required('Email is required'),
+    .email(t('emailValidMessage'))
+    .required(t('emailReqMessage')),
   password: Yup.string()
-    .min(8, 'Password must be at least 8 characters long')
-    .max(30, 'Password cannot be longer than 30 characters')
-    .required('Password is required'),
+    .min(8, t('passwordMinMessage'))
+    .max(30, t('passwordMaxMessage'))
+    .required(t('passwordReqMessage')),
   passwordConfirmation: Yup.string().oneOf(
     [Yup.ref('password'), null],
-    'Passwords must match'
+    t('passwordConfirmMessage')
   ),
 });
