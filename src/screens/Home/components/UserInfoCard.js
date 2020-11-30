@@ -15,9 +15,7 @@ const UserInfoCard = ({ name, email, state, img }) => {
       </MyAppText>
       <View style={{ flexDirection: 'row' }}>
         <Image
-          source={{
-            uri: img,
-          }}
+          source={require('../../../../assets/img/avatar.png')}
           style={styles.imgStyle}
         />
         <View style={{ marginLeft: 35 }}>

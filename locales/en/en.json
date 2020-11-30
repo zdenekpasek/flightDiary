@@ -73,5 +73,6 @@
   "usedBatteriesMinMessage": "Used batteries must be at least 3 characters long",
   "usedBatteriesMaxMessage": "Used batteries cannot be longer than 30 characters",
   "descMinMessage": "Description must be at least 3 characters long",
-  "descMaxMessage": "Description cannot be longer than 30 characters"
+  "descMaxMessage": "Description cannot be longer than 30 characters",
+  "createPdfQuestion": "Do you want to export all missions and create PDF?"
 }

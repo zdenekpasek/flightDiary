@@ -72,7 +72,6 @@ const editMission = (dispatch) => async ({
   }
 };
 
-
 const deleteMission = (dispatch) => async ({ _id }) => {
   try {
     await fdApi.delete(`/mission/${_id}`);

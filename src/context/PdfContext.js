@@ -1,3 +1,4 @@
+import * as WebBrowser from 'expo-web-browser';
 import createDataContext from './createDataContext';
 import fdApi from '../services/api/fdApi';
 import { navigate } from '../navRef';
@@ -20,7 +21,8 @@ const fetchPdf = (dispatch) => async () => {};
 const createPdf = (dispatch) => async () => {
   try {
     const response = await fdApi.post('/createPdf');
-    console.log(response.status);
+    console.log(response.data.fileUrl);
+    await WebBrowser.openBrowserAsync(`${response.data.fileUrl}`);
   } catch (err) {
     dispatch({
       type: 'add_error',

@@ -26,7 +26,7 @@ const UAVDetailScreen = ({ navigation }) => {
         <Header title={uav.uavName} />
         <DroneInfoCard
           uav={uav}
-          img="https://images.unsplash.com/photo-1514043454212-14c181f46583?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80"
+          img="https://images.unsplash.com/photo-1521405924368-64c5b84bec60?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1267&q=80"
         />
         <Spacer />
         <View style={{ flexDirection: 'row' }}>

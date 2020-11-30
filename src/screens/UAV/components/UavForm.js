@@ -212,8 +212,8 @@ UavForm.defaultProps = {
     uavName: '',
     okNumber: '',
     weight: '',
-    uav: '',
-    category: '',
+    uav: 'DJI Mavic Air',
+    category: 'Malý',
   },
 };
 

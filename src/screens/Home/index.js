@@ -32,21 +32,18 @@ const HomeScreen = () => {
       {
         title: t('missions'),
         value: state.stats.totalMissions,
-      },
-
-      {
-        title: t('flightTime'),
-        value: `${state.stats.totalFlightTime} min`,
+        icon: 'insert-chart',
       },
 
       {
         title: 'UAVs',
         value: state.stats.totalUavs,
+        icon: 'aircraft',
       },
-
       {
-        title: t('distance'),
-        value: 19999,
+        title: t('flightTime'),
+        value: `${state.stats.totalFlightTime} min`,
+        icon: 'clock',
       },
     ];
   }
@@ -77,7 +74,13 @@ const HomeScreen = () => {
         numColumns={2}
         horizontal={false}
         renderItem={({ item }) => {
-          return <StatisticsCard title={item.title} value={item.value} />;
+          return (
+            <StatisticsCard
+              title={item.title}
+              value={item.value}
+              icon={item.icon}
+            />
+          );
         }}
       />
     </Container>

@@ -2,6 +2,13 @@ import React, { Suspense } from 'react';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
+import {
+  Feather,
+  Entypo,
+  Ionicons,
+  MaterialCommunityIcons,
+  MaterialIcons,
+} from '@expo/vector-icons';
 import FlashMessage from 'react-native-flash-message';
 import MainScreen from './src/screens/Main';
 import HomeScreen from './src/screens/Home';
@@ -55,12 +62,66 @@ const switchNavigator = createSwitchNavigator({
     Login: LoginScreen,
     Signup: SignupScreen,
   }),
-  mainFlow: createBottomTabNavigator({
-    Home: HomeScreen,
-    missionFlow,
-    UAVFlow,
-    Settings: SettingsScreen,
-  }),
+  mainFlow: createBottomTabNavigator(
+    {
+      Home: {
+        screen: HomeScreen,
+        navigationOptions: {
+          tabBarLabel: 'Home',
+          tabBarIcon: ({ tintColor }) => (
+            <Entypo name="home" color={tintColor} size={25} />
+          ),
+        },
+      },
+
+      missionFlow: {
+        screen: missionFlow,
+        navigationOptions: {
+          tabBarLabel: 'Mission',
+          tabBarIcon: ({ tintColor }) => (
+            <MaterialIcons name="assignment" color={tintColor} size={25} />
+          ),
+        },
+      },
+
+      UAVFlow: {
+        screen: UAVFlow,
+        navigationOptions: {
+          tabBarLabel: 'UAV',
+          tabBarIcon: ({ tintColor }) => (
+            <Ionicons name="md-airplane" color={tintColor} size={25} />
+          ),
+        },
+      },
+
+      Settings: {
+        screen: SettingsScreen,
+        navigationOptions: {
+          tabBarLabel: 'Settings',
+          tabBarIcon: ({ tintColor }) => (
+            <MaterialCommunityIcons
+              name="settings"
+              color={tintColor}
+              size={25}
+            />
+          ),
+        },
+      },
+    },
+    {
+      tabBarOptions: {
+        showLabel: false,
+        showIcon: true,
+        activeTintColor: 'white',
+        labelStyle: {
+          fontSize: 12,
+        },
+        style: {
+          backgroundColor: '#374355',
+        },
+      },
+    }
+  ),
 });
 
 const App = createAppContainer(switchNavigator);

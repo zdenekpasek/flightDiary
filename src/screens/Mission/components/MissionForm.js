@@ -50,7 +50,12 @@ const MissionForm = ({
     initialValues ? initialValues.missionEnd : null
   );
   const [gps, setGps] = useState('');
-  const [uav, setUav] = useState('');
+  const [uav, setUav] = useState(() => {
+    if (uavs) {
+      return uavs[0].uavName;
+    }
+    return 'default';
+  });
   const formatGPS = (lat, long) => {
     const result = `${lat},${long}`;
     return result;
