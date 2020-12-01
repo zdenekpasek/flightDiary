@@ -1,7 +1,8 @@
 import React, { useContext, useEffect } from 'react';
-import { View, StyleSheet, FlatList } from 'react-native';
+import { View, StyleSheet, FlatList, ActivityIndicator } from 'react-native';
 import { Text, Button, ListItem } from 'react-native-elements';
 import { NavigationEvents, SafeAreaView } from 'react-navigation';
+import Card from './components/card';
 import { t, init } from '../../../localization';
 import Container from '../../components/Container';
 import Header from '../../components/Header';
@@ -67,26 +68,44 @@ const HomeScreen = () => {
       <Spacer />
       <Header title={t('statistics')} />
       <HeaderLine />
-      <FlatList
-        data={state.stats ? statsData : null}
-        keyExtractor={(item) => item.title}
-        scrollEnabled={false}
-        numColumns={2}
-        horizontal={false}
-        renderItem={({ item }) => {
-          return (
-            <StatisticsCard
-              title={item.title}
-              value={item.value}
-              icon={item.icon}
-            />
-          );
-        }}
-      />
+
+      {state.stats ? (
+        <FlatList
+          data={state.stats ? statsData : null}
+          keyExtractor={(item) => item.title}
+          scrollEnabled={false}
+          numColumns={2}
+          horizontal={false}
+          renderItem={({ item }) => {
+            return (
+              <StatisticsCard
+                title={item.title}
+                value={item.value}
+                icon={item.icon}
+              />
+              // <Card item={item} />
+            );
+          }}
+        />
+      ) : (
+        <View style={[styles.activityContainer, styles.horizontal]}>
+          <ActivityIndicator size="large" color="#0082D5" />
+        </View>
+      )}
     </Container>
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  activityContainer: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+  horizontal: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    padding: 10,
+  },
+});
 
 export default HomeScreen;

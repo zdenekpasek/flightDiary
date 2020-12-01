@@ -1,5 +1,11 @@
 import React, { useContext } from 'react';
-import { View, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
+import {
+  View,
+  StyleSheet,
+  FlatList,
+  TouchableOpacity,
+  ActivityIndicator,
+} from 'react-native';
 import { Text, Button, ListItem, Avatar } from 'react-native-elements';
 import { FontAwesome } from '@expo/vector-icons';
 import { NavigationEvents } from 'react-navigation';
@@ -27,27 +33,43 @@ const UAVListScreen = ({ navigation }) => {
       </View>
       <HeaderLine />
 
-      <FlatList
-        data={state.uavs}
-        keyExtractor={(item) => item._id}
-        horizontal={false}
-        showsVerticalScrollIndicator={false}
-        renderItem={({ item }) => {
-          return (
-            <UavListItem
-              item={item}
-              onPress={() =>
-                navigation.navigate('UAVDetail', { _id: item._id })
-              }
-            />
-          );
-        }}
-      />
+      {state.uavs ? (
+        <FlatList
+          data={state.uavs}
+          keyExtractor={(item) => item._id}
+          horizontal={false}
+          showsVerticalScrollIndicator={false}
+          renderItem={({ item }) => {
+            return (
+              <UavListItem
+                item={item}
+                onPress={() =>
+                  navigation.navigate('UAVDetail', { _id: item._id })
+                }
+              />
+            );
+          }}
+        />
+      ) : (
+        <View style={[styles.activityContainer, styles.horizontal]}>
+          <ActivityIndicator size="large" color="#0082D5" />
+        </View>
+      )}
     </Container>
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  activityContainer: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+  horizontal: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    padding: 10,
+  },
+});
 
 UAVListScreen.navigationOptions = {
   headerShown: false,

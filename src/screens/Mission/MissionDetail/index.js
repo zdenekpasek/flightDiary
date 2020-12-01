@@ -18,7 +18,7 @@ const MissionDetailScreen = ({ navigation }) => {
   const { state, editMission, deleteMission } = useContext(MissionContext);
   const _id = navigation.getParam('_id');
 
-  const mission = state.missions.find((m) => m._id === _id);
+  const mission = state.missions.docs.find((m) => m._id === _id);
 
   if (mission) {
     return (

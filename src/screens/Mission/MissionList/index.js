@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { View, StyleSheet, FlatList } from 'react-native';
+import { View, StyleSheet, FlatList, ActivityIndicator } from 'react-native';
 import { Text, Button } from 'react-native-elements';
 import { FontAwesome } from '@expo/vector-icons';
 import { NavigationEvents } from 'react-navigation';
@@ -57,28 +57,43 @@ const MissionListScreen = ({ navigation }) => {
       </View>
 
       <HeaderLine />
-
-      <FlatList
-        data={state.missions}
-        keyExtractor={(item) => item._id}
-        horizontal={false}
-        showsVerticalScrollIndicator={false}
-        renderItem={({ item }) => {
-          return (
-            <MissionListItem
-              item={item}
-              onPress={() =>
-                navigation.navigate('MissionDetail', { _id: item._id })
-              }
-            />
-          );
-        }}
-      />
+      {state.missions ? (
+        <FlatList
+          data={state.missions.docs}
+          keyExtractor={(item) => item._id}
+          horizontal={false}
+          showsVerticalScrollIndicator={false}
+          renderItem={({ item }) => {
+            return (
+              <MissionListItem
+                item={item}
+                onPress={() =>
+                  navigation.navigate('MissionDetail', { _id: item._id })
+                }
+              />
+            );
+          }}
+        />
+      ) : (
+        <View style={[styles.activityContainer, styles.horizontal]}>
+          <ActivityIndicator size="large" color="#0082D5" />
+        </View>
+      )}
     </Container>
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  activityContainer: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+  horizontal: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    padding: 10,
+  },
+});
 
 MissionListScreen.navigationOptions = {
   headerShown: false,

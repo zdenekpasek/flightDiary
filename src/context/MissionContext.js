@@ -14,7 +14,9 @@ const missionReducer = (state, action) => {
 };
 
 const fetchMissions = (dispatch) => async () => {
-  const response = await fdApi.get('/mission');
+  const response = await fdApi.get('/mission', {
+    params: { page: 1, limit: 10 },
+  });
   dispatch({ type: 'fetch_missions', payload: response.data });
 };
 
