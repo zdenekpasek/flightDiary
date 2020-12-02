@@ -13,6 +13,7 @@ import { data } from '../../../mock/missionData_mock';
 import { Context as MissionContext } from '../../../context/MissionContext';
 import { Context as UavContext } from '../../../context/UavContext';
 import { Context as PdfContext } from '../../../context/PdfContext';
+import MyAppText from '../../../components/MyAppText';
 
 const MissionListScreen = ({ navigation }) => {
   init();
@@ -57,6 +58,24 @@ const MissionListScreen = ({ navigation }) => {
       </View>
 
       <HeaderLine />
+
+      {state.missions && state.missions.total === 0 ? (
+        <View>
+          <MyAppText
+            customStyle={{
+              alignSelf: 'center',
+              textAlign: 'center',
+              justifyContent: 'center',
+              color: '#0082D5',
+            }}
+            fontWeight="bold"
+          >
+            {t('noMissions')}
+          </MyAppText>
+        </View>
+      ) : null}
+
+      {console.log(state.missions)}
       {state.missions ? (
         <FlatList
           data={state.missions.docs}

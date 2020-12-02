@@ -78,5 +78,7 @@
   "weightMinMessage": "Váha musí obsahovat minimálně 2 znaky",
   "weightMaxMessage": "Váha nesmí obsahovat více jak 20 znaků",
   "weightReqMessage": "Váha je povinná",
-  "createPdfQuestion": "Chcete exportovat všechny mise a vytvořit PDF?"
+  "createPdfQuestion": "Chcete exportovat všechny mise a vytvořit PDF?",
+  "noMissions": "Nemáte žádné mise. Přidejte svou první misi tlačítkem +.",
+  "noUavInMission": "Nemáte vytvořené UAV pro realizování mise. Vytořte si UAV najetím na ikonu."
 }

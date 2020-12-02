@@ -10,6 +10,7 @@ import Spacer from '../../../components/spacer';
 import MissionForm from '../components/MissionForm';
 import { Context as MissionContext } from '../../../context/MissionContext';
 import { Context as UavContext } from '../../../context/UavContext';
+import { Entypo } from '@expo/vector-icons';
 
 const MissionCreateScreen = () => {
   init();
@@ -22,12 +23,36 @@ const MissionCreateScreen = () => {
     <ScrollView>
       <Container>
         <NavigationEvents onWillFocus={fetchUavs} />
-        <MissionForm
-          buttonText={<MyAppText>{t('addMission')}</MyAppText>}
-          onSubmit={createMission}
-          uavs={state ? state.uavs : 'uavs'}
-          missionEdit={false}
-        />
+
+        {state.uavs && !state.uavs.length ? (
+          <View>
+            <MyAppText
+              customStyle={{
+                alignSelf: 'center',
+                textAlign: 'center',
+                justifyContent: 'center',
+                color: '#0082D5',
+              }}
+              fontWeight="bold"
+            >
+              {t('noUavInMission')}
+            </MyAppText>
+
+            <Entypo
+              style={{ alignSelf: 'center' }}
+              name="aircraft"
+              size={30}
+              color="#0082D5"
+            />
+          </View>
+        ) : (
+          <MissionForm
+            buttonText={<MyAppText>{t('addMission')}</MyAppText>}
+            onSubmit={createMission}
+            uavs={state ? state.uavs : 'uavs'}
+            missionEdit={false}
+          />
+        )}
       </Container>
     </ScrollView>
   );

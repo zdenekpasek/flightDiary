@@ -17,7 +17,6 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import MyAppText from '../../../components/MyAppText';
 import { t, init } from '../../../../localization';
 import { missionSchema } from '../../../validation/missionSchema';
-import { Context as WeatherContext } from '../../../context/WeatherContext';
 import useWeather from '../../../hooks/useWeather';
 import useGeoLocation from '../../../hooks/useGeoLocation';
 import useDateTime from '../../../hooks/useDateTime';
