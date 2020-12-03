@@ -76,5 +76,9 @@
   "descMaxMessage": "Description cannot be longer than 30 characters",
   "createPdfQuestion": "Do you want to export all missions and create PDF?",
   "noMissions": "You have no missions. Add your first one pressing + button.",
-  "noUavInMission": "You dont have UAV for realizing mission. Please create one."
+  "noUavInMission": "You dont have UAV for realizing mission. Please create one.",
+  "noUavs": "Create your first UAV by clicking on + button",
+  "noExport": "Pro exportování musíte realizovat alespoň jednu misi.",
+  "flightDiary": "Flight Diary",
+  "trackFlights": "Track your flights"
 }

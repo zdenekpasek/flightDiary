@@ -4,6 +4,7 @@ import { Text, Button } from 'react-native-elements';
 import { FontAwesome } from '@expo/vector-icons';
 import { NavigationEvents } from 'react-navigation';
 import { ConfirmDialog } from 'react-native-simple-dialogs';
+import { showMessage, hideMessage } from 'react-native-flash-message';
 import { t, init } from '../../../../localization';
 import Container from '../../../components/Container';
 import Header from '../../../components/Header';
@@ -34,6 +35,12 @@ const MissionListScreen = ({ navigation }) => {
           positiveButton={{
             title: t('yes'),
             onPress: () => {
+              if (state.missions && state.missions.total === 0) {
+                showMessage({
+                  message: t('noExport'),
+                  type: 'info',
+                });
+              }
               createPdf();
               setDialogVisible(false);
             },

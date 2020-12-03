@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Platform } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import {
   widthPercentageToDP as wp,
@@ -15,6 +15,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F2F2F2',
     flex: 1,
     padding: 10,
+    paddingTop: Platform.OS === 'android' ? 20 : 0,
   },
 });
 

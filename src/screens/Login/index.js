@@ -18,9 +18,8 @@ const LoginScreen = ({ navigation }) => {
         title={t('loginTitle')}
         buttonText={<MyAppText>{t('login')}</MyAppText>}
         onSubmit={login}
+        errorMessage={state.errorMsg}
       />
-
-      <Text>{state.errorMsg}</Text>
 
       <MyAppText
         customStyle={{ color: 'blue', marginLeft: 10 }}

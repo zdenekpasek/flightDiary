@@ -16,6 +16,7 @@ import HeaderLine from '../../../components/HeaderLine';
 import UavListItem from '../components/UavListItem';
 import { data } from '../../../mock/uavData_mock';
 import { Context as UavContext } from '../../../context/UavContext';
+import MyAppText from '../../../components/MyAppText';
 
 const UAVListScreen = ({ navigation }) => {
   init();
@@ -32,6 +33,22 @@ const UAVListScreen = ({ navigation }) => {
         />
       </View>
       <HeaderLine />
+
+      {state.uavs && !state.uavs.length ? (
+        <View>
+          <MyAppText
+            customStyle={{
+              alignSelf: 'center',
+              textAlign: 'center',
+              justifyContent: 'center',
+              color: '#0082D5',
+            }}
+            fontWeight="bold"
+          >
+            {t('noUavs')}
+          </MyAppText>
+        </View>
+      ) : null}
 
       {state.uavs ? (
         <FlatList

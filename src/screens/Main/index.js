@@ -2,11 +2,13 @@ import React from 'react';
 import { View, StyleSheet, ImageBackground } from 'react-native';
 import { Text } from 'react-native-elements';
 import { SafeAreaView } from 'react-navigation';
+import { t, init } from '../../../localization';
 import MyAppText from '../../components/MyAppText';
 import Spacer from '../../components/spacer';
 import Button from './components/button';
 
 const MainScreen = ({ navigation }) => {
+  init();
   return (
     <>
       <ImageBackground
@@ -19,7 +21,7 @@ const MainScreen = ({ navigation }) => {
           fontSize={34}
           customStyle={styles.titleStyle}
         >
-          Flight Diary
+          {t('flightDiary')}
         </MyAppText>
 
         <MyAppText
@@ -27,19 +29,19 @@ const MainScreen = ({ navigation }) => {
           fontSize={20}
           customStyle={[styles.titleStyle, { marginBottom: 40 }]}
         >
-          Track your flights
+          {t('trackFlights')}
         </MyAppText>
       </ImageBackground>
       <Spacer />
       <View>
         <Button
-          title="Login"
+          title={t('login')}
           onPress={() => navigation.navigate('Login')}
           buttonGradient={['#2A84EC', '#2981E7', '#1C63B3']}
         />
         <Spacer />
         <Button
-          title="Signup"
+          title={t('signup')}
           onPress={() => navigation.navigate('Signup')}
           buttonGradient={['#2A84EC', '#2981E7', '#1C63B3']}
         />

@@ -12,7 +12,9 @@ export default () => {
         setErrorMsg('Permission to access location was denied');
       }
 
-      let location = await Location.getCurrentPositionAsync({});
+      let location = await Location.getCurrentPositionAsync({
+        enableHighAccuracy: true,
+      });
       setLocation(location);
     } catch (err) {
       console.log(err);

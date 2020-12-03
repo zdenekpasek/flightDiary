@@ -31,18 +31,25 @@ const createMission = (dispatch) => async ({
   wind,
   desc,
 }) => {
-  await fdApi.post('/mission', {
-    missionName,
-    uav,
-    gps,
-    missionStart,
-    missionEnd,
-    usedBatteries,
-    tmp,
-    wind,
-    desc,
-  });
-  navigate('MissionList');
+  try {
+    await fdApi.post('/mission', {
+      missionName,
+      uav,
+      gps,
+      missionStart,
+      missionEnd,
+      usedBatteries,
+      tmp,
+      wind,
+      desc,
+    });
+    navigate('MissionList');
+  } catch (err) {
+    dispatch({
+      type: 'add_error',
+      payload: 'Something went wrong.',
+    });
+  }
 };
 
 const editMission = (dispatch) => async ({

@@ -5,13 +5,13 @@ import { navigate } from '../navRef';
 
 const authReducer = (state, action) => {
   switch (action.type) {
+    case 'add_err':
+      return { ...state, errorMsg: action.payload };
     case 'signup':
       return {
         errorMsg: '',
         token: action.payload.token,
       };
-    case 'add_err':
-      return { ...state, errorMsg: action.payload };
     case 'logout':
       return { token: null, errorMsg: '' };
     default:
@@ -83,5 +83,5 @@ const signout = (dispatch) => async () => {
 export const { Provider, Context } = createDataContext(
   authReducer,
   { signup, login, tryLocalLogin, signout },
-  { errorMsg: '', token: null }
+  { token: null, errorMsg: '' }
 );

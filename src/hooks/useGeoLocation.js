@@ -12,7 +12,9 @@ export default function useGeoLocation(lat, lon) {
         setErrorMsg('Permission to access location was denied');
       }
 
-      let location = await Location.getCurrentPositionAsync({});
+      let location = await Location.getCurrentPositionAsync({
+        accuracy: Location.Accuracy.High,
+      });
       setLocation(location);
     })();
   }, []);
