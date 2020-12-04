@@ -36,6 +36,14 @@
 
 ![metroBundler](https://user-images.githubusercontent.com/45901583/101212891-c5a80e00-3679-11eb-8bcd-e61bc481fc08.PNG)
 
+16. Poslední částí je instalace ngrok - npm i ngrok
+17. V složce projektu - ngrok http 3000
+18. Forwarding adresu zkopírovat do src/services/api/fdApi.js
+
+![ngrok](https://user-images.githubusercontent.com/45901583/101216244-75cc4580-367f-11eb-9b12-327a05f8d2cb.PNG)
+
+![fdapi](https://user-images.githubusercontent.com/45901583/101216343-a1e7c680-367f-11eb-9691-80cfc2a9542a.PNG)
+
 ## Instalace a instrukce pro lokální spustění pro macOS
 
 1. Stáhnout a nainstalovat LTS verzi Node.js https://nodejs.org/en/download/
@@ -69,3 +77,24 @@
 14. Zavřete a znovu otevřete terminál a přejdete do složky s projektem
 15. Nainstalujte globálne expo-cli tools do nové cesty - npm install expo-cli --global
 16. npm start
+17. Mělo by se otevřít okno v prohlížeci a QR kód v terminálu
+
+![npmstart](https://user-images.githubusercontent.com/45901583/101211781-01da6f00-3678-11eb-8a01-95c92852c32c.PNG)
+
+18. Nejjednoduší je testování na fyzickém zařízení, kdy je třeba si stahnout aplikaci Expo
+    (android: https://play.google.com/store/apps/details?id=host.exp.exponent&hl=en&gl=US)
+    (iOS: https://apps.apple.com/us/app/expo-client/id982107779)
+
+19. Mít puštený server
+20. Naskenovat přes fotoaparát zařízení QR kód - otevře se aplikace Expo a stáhne se Javascript bundle
+21. Další možností je testování na emulátoru - vyžaduje platformově závislý software (xCode, Android Studio), nainstalované a spuštené virtuální zařízení. Následně přes metro bundler - Run on Android device/emulator
+
+![metroBundler](https://user-images.githubusercontent.com/45901583/101212891-c5a80e00-3679-11eb-8bcd-e61bc481fc08.PNG)
+
+22. Poslední částí je instalace ngrok - npm i ngrok
+23. V složce projektu - ngrok http 3000
+24. Forwarding adresu zkopírovat do src/services/api/fdApi.js
+
+![ngrok](https://user-images.githubusercontent.com/45901583/101216244-75cc4580-367f-11eb-9b12-327a05f8d2cb.PNG)
+
+![fdapi](https://user-images.githubusercontent.com/45901583/101216343-a1e7c680-367f-11eb-9691-80cfc2a9542a.PNG)
