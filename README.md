@@ -38,11 +38,17 @@
 
 16. Poslední částí je instalace ngrok - npm i ngrok
 17. V složce projektu - ngrok http 3000
-18. Forwarding adresu zkopírovat do src/services/api/fdApi.js
+18. Forwarding adresu zkopírovat do src/services/api/fdApi.js (Pozor, adresa vyprší po 8 hodinách)
 
 ![ngrok](https://user-images.githubusercontent.com/45901583/101216244-75cc4580-367f-11eb-9b12-327a05f8d2cb.PNG)
 
 ![fdapi](https://user-images.githubusercontent.com/45901583/101216343-a1e7c680-367f-11eb-9691-80cfc2a9542a.PNG)
+
+19. Pro kompletní lokální fungování je tedy potřeba mít puštený server, v dalším terminálu ve složce projektu ngrok na portu 3000 a mít zkopírovanou aktuální forwarding adresu v projektu, a jako poslední npm start ve složce projektu
+
+20. Nutné je také mít k dispozici API klíč openWeatherApi, který musí být ve složce v rootu pod souborem .env ve formátu API_KEY_W = klíč
+    Klíč si můžete vygenerovat vlastní nebo po vyžádání poskytnu svůj
+    z bezpečnostních důvodu není verzován
 
 ## Instalace a instrukce pro lokální spustění pro macOS
 
@@ -98,3 +104,9 @@
 ![ngrok](https://user-images.githubusercontent.com/45901583/101216244-75cc4580-367f-11eb-9b12-327a05f8d2cb.PNG)
 
 ![fdapi](https://user-images.githubusercontent.com/45901583/101216343-a1e7c680-367f-11eb-9691-80cfc2a9542a.PNG)
+
+25. Pro kompletní lokální fungování je tedy potřeba mít puštený server, v dalším terminálu ve složce projektu ngrok na portu 3000 a mít zkopírovanou aktuální forwarding adresu v projektu, a jako poslední npm start ve složce projektu
+
+26. Nutné je také mít k dispozici API klíč openWeatherApi, který musí být ve složce v rootu pod souborem .env ve formátu API_KEY_W = klíč
+    Klíč si můžete vygenerovat vlastní nebo po vyžádání poskytnu svůj
+    z bezpečnostních důvodu není verzován
