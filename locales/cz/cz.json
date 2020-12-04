@@ -84,5 +84,6 @@
   "noUavs": "Vytvořte své první UAV kliknutím na tlačítko +",
   "noExport": "Pro exportování musíte realizovat alespoň jednu misi.",
   "flightDiary": "Letecký deník",
-  "trackFlights": "Sledujte své lety"
+  "trackFlights": "Sledujte své lety",
+  "loadMore": "Načíst další"
 }

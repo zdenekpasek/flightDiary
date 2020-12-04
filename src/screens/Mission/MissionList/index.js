@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { View, StyleSheet, FlatList, ActivityIndicator } from 'react-native';
 import { Text, Button } from 'react-native-elements';
 import { FontAwesome } from '@expo/vector-icons';
@@ -18,14 +18,32 @@ import MyAppText from '../../../components/MyAppText';
 
 const MissionListScreen = ({ navigation }) => {
   init();
-  const { state, fetchMissions } = useContext(MissionContext);
+  const { state, fetchMissions, clearMissions } = useContext(MissionContext);
   const [dialogVisible, setDialogVisible] = useState(false);
+  const [page, setPage] = useState(1);
 
   const { createPdf } = useContext(PdfContext);
 
+  const loadMoreData = () => {
+    setPage(page + 1);
+  };
+
+  useEffect(() => {
+    // this is called only if the variable `page` changes
+    state.missions && page !== 1 && fetchMissions(page);
+  }, [page]);
+
   return (
     <Container>
-      <NavigationEvents onWillFocus={fetchMissions} />
+      <NavigationEvents
+        onWillFocus={() => {
+          fetchMissions(page);
+        }}
+        onDidBlur={() => {
+          setPage(1);
+          clearMissions();
+        }}
+      />
       <View style={{ flexDirection: 'row' }}>
         <ConfirmDialog
           title="PDF"
@@ -65,8 +83,8 @@ const MissionListScreen = ({ navigation }) => {
       </View>
 
       <HeaderLine />
-
-      {state.missions && state.missions.total === 0 ? (
+      {console.log(state)}
+      {state.missions && state.missions.pageInfo.total === 0 ? (
         <View>
           <MyAppText
             customStyle={{
@@ -82,13 +100,15 @@ const MissionListScreen = ({ navigation }) => {
         </View>
       ) : null}
 
-      {console.log(state.missions)}
-      {state.missions ? (
+      {state.missions.data.length ? (
         <FlatList
-          data={state.missions.docs}
+          data={state.missions.data}
           keyExtractor={(item) => item._id}
           horizontal={false}
           showsVerticalScrollIndicator={false}
+          ListFooterComponent={
+            <Button title={t('loadMore')} onPress={loadMoreData}></Button>
+          }
           renderItem={({ item }) => {
             return (
               <MissionListItem

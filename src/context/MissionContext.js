@@ -7,15 +7,34 @@ const missionReducer = (state, action) => {
     case 'add_error':
       return { ...state, errorMessage: action.payload };
     case 'fetch_missions':
-      return action.payload;
+      return {
+        ...state,
+        missions: {
+          ...state.missions,
+          data: [...state.missions.data, ...action.payload.missions.docs],
+          pageInfo: {
+            page: action.payload.missions.page,
+            pages: action.payload.missions.pages,
+            total: action.payload.missions.total,
+          },
+        },
+      };
+    case 'clear_missions':
+      return {
+        missions: { data: [], pageInfo: { ...state.missions.pageInfo } },
+      };
     default:
       return state;
   }
 };
 
-const fetchMissions = (dispatch) => async () => {
+const clearMissions = (dispatch) => async (page) => {
+  dispatch({ type: 'clear_missions' });
+};
+
+const fetchMissions = (dispatch) => async (page) => {
   const response = await fdApi.get('/mission', {
-    params: { page: 1, limit: 10 },
+    params: { page, limit: 10 },
   });
   dispatch({ type: 'fetch_missions', payload: response.data });
 };
@@ -61,8 +80,6 @@ const editMission = (dispatch) => async ({
   usedBatteries,
   desc,
 }) => {
-  console.log(missionStart);
-  console.log(missionEnd);
   try {
     await fdApi.put(`/mission/${_id}`, {
       missionName,
@@ -95,6 +112,12 @@ const deleteMission = (dispatch) => async ({ _id }) => {
 
 export const { Provider, Context } = createDataContext(
   missionReducer,
-  { fetchMissions, createMission, editMission, deleteMission },
-  { errorMessage: '' }
+  { fetchMissions, createMission, editMission, deleteMission, clearMissions },
+  {
+    errorMessage: '',
+    missions: {
+      data: [],
+      pageInfo: {},
+    },
+  }
 );
