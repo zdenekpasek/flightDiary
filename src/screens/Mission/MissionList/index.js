@@ -54,7 +54,7 @@ const MissionListScreen = ({ navigation }) => {
           positiveButton={{
             title: t('yes'),
             onPress: () => {
-              if (state.missions && state.missions.total === 0) {
+              if (state.missions && state.missions.pageInfo.total === 0) {
                 showMessage({
                   message: t('noExport'),
                   type: 'info',
