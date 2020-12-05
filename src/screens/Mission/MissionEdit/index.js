@@ -20,7 +20,7 @@ const MissionEditScreen = ({ navigation }) => {
 
   const _id = navigation.getParam('_id');
 
-  const mission = state.missions.docs.find((m) => m._id === _id);
+  const mission = state.missions.data.find((m) => m._id === _id);
 
   const initialValues = {
     _id: mission._id,

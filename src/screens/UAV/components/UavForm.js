@@ -30,7 +30,7 @@ const UavForm = ({ buttonText, onSubmit, error, initialValues }) => {
   // TODO: resolve uav select bug after aplying some filter
   // it stays on the same position before the filter
   return (
-    <View>
+    <View style={{ paddingTop: 10 }}>
       <Formik
         initialValues={initialValues}
         onSubmit={onSubmit}

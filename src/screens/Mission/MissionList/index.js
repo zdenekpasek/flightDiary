@@ -18,9 +18,12 @@ import MyAppText from '../../../components/MyAppText';
 
 const MissionListScreen = ({ navigation }) => {
   init();
-  const { state, fetchMissions, clearMissions } = useContext(MissionContext);
+  const { state, fetchMissions, clearMissions, clearPageInfo } = useContext(
+    MissionContext
+  );
   const [dialogVisible, setDialogVisible] = useState(false);
   const [page, setPage] = useState(1);
+  const [resetData, setResetData] = useState(false);
 
   const { createPdf } = useContext(PdfContext);
 
@@ -37,11 +40,9 @@ const MissionListScreen = ({ navigation }) => {
     <Container>
       <NavigationEvents
         onWillFocus={() => {
-          fetchMissions(page);
-        }}
-        onDidBlur={() => {
-          setPage(1);
           clearMissions();
+          setPage(1);
+          fetchMissions(1);
         }}
       />
       <View style={{ flexDirection: 'row' }}>
@@ -107,7 +108,14 @@ const MissionListScreen = ({ navigation }) => {
           horizontal={false}
           showsVerticalScrollIndicator={false}
           ListFooterComponent={
-            <Button title={t('loadMore')} onPress={loadMoreData}></Button>
+            <Button
+              title={t('loadMore')}
+              onPress={() => {
+                if (page < state.missions.pageInfo.pages) {
+                  loadMoreData();
+                }
+              }}
+            ></Button>
           }
           renderItem={({ item }) => {
             return (

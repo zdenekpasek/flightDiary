@@ -21,8 +21,20 @@ const missionReducer = (state, action) => {
       };
     case 'clear_missions':
       return {
-        missions: { data: [], pageInfo: { ...state.missions.pageInfo } },
+        missions: {
+          data: [],
+          pageInfo: { ...state.missions.pageInfo },
+        },
       };
+    case 'clear_pageIngo':
+      return {
+        missions: {
+          data: [],
+          pageInfo: {},
+        },
+      };
+    case 'fetch_missionById':
+      return { ...state, missionById: action.payload };
     default:
       return state;
   }
@@ -32,11 +44,20 @@ const clearMissions = (dispatch) => async (page) => {
   dispatch({ type: 'clear_missions' });
 };
 
+const clearPageInfo = (dispatch) => async (page) => {
+  dispatch({ type: 'clear_pageIngo' });
+};
+
 const fetchMissions = (dispatch) => async (page) => {
   const response = await fdApi.get('/mission', {
     params: { page, limit: 10 },
   });
   dispatch({ type: 'fetch_missions', payload: response.data });
+};
+
+const fetchMissionById = (dispatch) => async ({ _id }) => {
+  const response = await fdApi.get(`/mission/${_id}`);
+  dispatch({ type: 'fetch_missionById', payload: response.data });
 };
 
 const createMission = (dispatch) => async ({
@@ -89,7 +110,7 @@ const editMission = (dispatch) => async ({
       usedBatteries,
       desc,
     });
-    navigate('MissionList');
+    navigate('MissionDetail', { edited: true });
   } catch (err) {
     dispatch({
       type: 'add_error',
@@ -112,12 +133,21 @@ const deleteMission = (dispatch) => async ({ _id }) => {
 
 export const { Provider, Context } = createDataContext(
   missionReducer,
-  { fetchMissions, createMission, editMission, deleteMission, clearMissions },
+  {
+    fetchMissions,
+    createMission,
+    editMission,
+    deleteMission,
+    clearMissions,
+    clearPageInfo,
+    fetchMissionById,
+  },
   {
     errorMessage: '',
     missions: {
       data: [],
       pageInfo: {},
     },
+    missionById: {},
   }
 );

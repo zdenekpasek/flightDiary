@@ -85,7 +85,7 @@ const MissionForm = ({
 
   if ((loc !== null && uavs) || (missionEdit && uavs)) {
     return (
-      <View>
+      <View style={{ paddingTop: 10 }}>
         <Formik
           initialValues={
             initialValues
