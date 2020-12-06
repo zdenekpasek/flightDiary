@@ -29,7 +29,6 @@ const CustomButton = ({ title, onPress, buttonGradient }) => {
 };
 
 const styles = StyleSheet.create({
-  // TODO: resolve shadow bug in web browser
   touchableContainer: {
     alignItems: 'center',
     shadowColor: 'rgba(0, 0, 0, 0.5)',

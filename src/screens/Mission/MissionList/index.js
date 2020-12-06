@@ -84,7 +84,6 @@ const MissionListScreen = ({ navigation }) => {
       </View>
 
       <HeaderLine />
-      {console.log(state)}
       {state.missions && state.missions.pageInfo.total === 0 ? (
         <View>
           <MyAppText

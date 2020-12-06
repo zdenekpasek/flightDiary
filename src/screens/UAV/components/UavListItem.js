@@ -4,7 +4,6 @@ import { Avatar, ListItem } from 'react-native-elements';
 import { View, StyleSheet } from 'react-native';
 import MyAppText from '../../../components/MyAppText';
 
-// TODO: Generalize this component
 const UavListItem = ({ item, onPress }) => {
   return (
     <ListItem

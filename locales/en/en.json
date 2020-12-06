@@ -81,5 +81,6 @@
   "noExport": "Pro exportování musíte realizovat alespoň jednu misi.",
   "flightDiary": "Flight Diary",
   "trackFlights": "Track your flights",
-  "loadMore": "Load more"
+  "loadMore": "Load more",
+  "deleteMissionQuestion": "Are you sure to delete this Mission?"
 }

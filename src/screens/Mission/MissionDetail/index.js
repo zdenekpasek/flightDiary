@@ -22,8 +22,6 @@ const MissionDetailScreen = ({ navigation }) => {
   const _id = navigation.getParam('_id');
   const edited = navigation.getParam('edited');
 
-  // const mission = state.missions.data.find((m) => m._id === _id);
-
   useEffect(() => {
     fetchMissionById({ _id });
   }, [edited]);
@@ -41,7 +39,7 @@ const MissionDetailScreen = ({ navigation }) => {
           <View style={{ flexDirection: 'row' }}>
             <ConfirmDialog
               title="Mission"
-              message={t('deleteUavQuestion')}
+              message={t('deleteMissionQuestion')}
               visible={dialogVisible}
               onTouchOutside={() => setDialogVisible(false)}
               positiveButton={{

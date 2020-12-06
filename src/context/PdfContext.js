@@ -21,9 +21,7 @@ const fetchPdf = (dispatch) => async () => {};
 const createPdf = (dispatch) => async () => {
   try {
     const response = await fdApi.post('/createPdf');
-    console.log(response.data.fileUrl);
     await WebBrowser.openBrowserAsync(`${response.data.fileUrl}`);
-    // await WebBrowser.openBrowserAsync(`https://expo.io`);
   } catch (err) {
     dispatch({
       type: 'add_error',

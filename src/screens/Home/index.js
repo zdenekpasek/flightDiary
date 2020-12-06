@@ -2,7 +2,6 @@ import React, { useContext, useEffect } from 'react';
 import { View, StyleSheet, FlatList, ActivityIndicator } from 'react-native';
 import { Text, Button, ListItem } from 'react-native-elements';
 import { NavigationEvents, SafeAreaView } from 'react-navigation';
-import Card from './components/card';
 import { t, init } from '../../../localization';
 import Container from '../../components/Container';
 import Header from '../../components/Header';
@@ -83,7 +82,6 @@ const HomeScreen = () => {
                 value={item.value}
                 icon={item.icon}
               />
-              // <Card item={item} />
             );
           }}
         />

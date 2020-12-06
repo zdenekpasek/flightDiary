@@ -21,7 +21,6 @@ import useWeather from '../../../hooks/useWeather';
 import useGeoLocation from '../../../hooks/useGeoLocation';
 import useDateTime from '../../../hooks/useDateTime';
 
-// TODO: Fix changing date and time on mission edit, doesnt work, puts there old data
 const MissionForm = ({
   buttonText,
   onSubmit,
@@ -74,7 +73,6 @@ const MissionForm = ({
       }
     }, [loc]);
   } else {
-    // TODO: refactor this block
     const startDateMoment = moment(initialValues.missionStart);
     const startDateUtc = startDateMoment.utc().format();
     const endDateMoment = moment(initialValues.missionEnd);

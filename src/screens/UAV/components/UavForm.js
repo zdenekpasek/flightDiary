@@ -26,9 +26,6 @@ const UavForm = ({ buttonText, onSubmit, error, initialValues }) => {
     });
   };
 
-  // TODO: resolve flash messages after success, not success
-  // TODO: resolve uav select bug after aplying some filter
-  // it stays on the same position before the filter
   return (
     <View style={{ paddingTop: 10 }}>
       <Formik
