@@ -22,6 +22,14 @@ V ideálním případě je vhodné testování na fyzickém zařízení, které 
 - Dále je třeba projekt spustit lokálně na vašem počítači, návod je popsaný níže (Instalace a instrukce pro lokální spustění pro Windows/macOS)
 - Pokud je projekt spuštěný a je vygenerovaný QR kód, stačí ho naskenovat fotoparatem zařízení a aplikace se následně otevře
 
+## APK a IPA soubory
+
+1. odkaz na APK soubor
+   https://drive.google.com/file/d/1BAsBa97E2KRa7GNSL3gMaMWPLqGloBuO/view
+   apk soubor je možný nainstalovat přímo na android zařízení nebo přetáhnout do emulátoru v Android studiu
+2. odkaz na IPA soubor
+   ...
+
 ## Instalace a instrukce pro lokální spustění pro Windows
 
 1. Stáhnout a nainstalovat LTS verzi Node.js https://nodejs.org/en/download/
